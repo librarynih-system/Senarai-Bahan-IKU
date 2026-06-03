@@ -64,7 +64,7 @@
         tbody td { 
             background-color: var(--row-bg, #ffffff); 
             border-top: 1px solid transparent; border-bottom: 1px solid transparent;
-            font-size: 0.65rem; transition: all 0.2s ease;
+            transition: all 0.2s ease;
         }
         tbody td:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-left: 1px solid transparent; }
         tbody td:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-right: 1px solid transparent; }
@@ -1054,7 +1054,6 @@
         function updateAnalyticsCatalog() {
             if (!masterData || masterData.length === 0) return;
 
-            // 1. Keyword Calculation (Dari Title)
             let wordCounts = {};
             const stopWords = ['the', 'of', 'and', 'a', 'to', 'in', 'for', 'on', 'with', 'an', 'by', 'is', 'at', 'dari', 'dan', 'yang', 'untuk', 'di', 'ke', 'ini', 'itu', 'pada', 'dalam'];
             masterData.forEach(row => {
@@ -1076,7 +1075,6 @@
                 keywordData = [0, 0, 0, 0, 0];
             }
 
-            // 2. Field/Subject Calculation (Dari Call No 082)
             let fieldCounts = { 'Computer/Tech': 0, 'Science': 0, 'Social Sciences': 0, 'Others': 0 };
             masterData.forEach(row => {
                 let callNo = (row.callNo082 || "").trim();
@@ -1088,7 +1086,6 @@
             let fieldLabels = Object.keys(fieldCounts);
             let fieldData = Object.values(fieldCounts);
 
-            // 3. Trends Calculation (Dari Month/Year)
             let monthCountsArr = [0,0,0,0,0,0,0,0,0,0,0,0];
             let monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
             masterData.forEach(row => {
@@ -1111,7 +1108,6 @@
                 trendData.push(monthCountsArr[m]);
             }
 
-            // Kemas kini Teks Summary
             const summaryEl = document.getElementById('analytics-summary-text');
             if(summaryEl) {
                 const topField = fieldLabels[fieldData.indexOf(Math.max(...fieldData))] || '-';
@@ -1183,8 +1179,8 @@
         /* =====================================================================
            SESSION TIMEOUT LOGIC
            ===================================================================== */
-        const TIMEOUT_DURATION = 30 * 60 * 1000; 
-        const WARNING_DURATION = 29 * 60 * 1000; 
+        const TIMEOUT_DURATION = 4 * 60 * 60 * 1000; 
+        const WARNING_DURATION = TIMEOUT_DURATION - (1 * 60 * 1000); 
         let sessionCheckerInterval;
         let autoSyncInterval;
         let isThrottled = false;
@@ -1265,7 +1261,7 @@
         function logoutDueToInactivity() {
             hideSessionWarning();
             logout();
-            alert("Sesi anda telah tamat kerana tiada aktiviti selama 30 minit. Sila log masuk semula.");
+            alert("Sesi anda telah tamat kerana tiada aktiviti selama 4 Jam. Sila log masuk semula.");
         }
 
         /* =====================================================================
