@@ -64,7 +64,7 @@
         tbody td { 
             background-color: var(--row-bg, #ffffff); 
             border-top: 1px solid transparent; border-bottom: 1px solid transparent;
-            transition: all 0.2s ease;
+            font-size: 0.65rem; transition: all 0.2s ease;
         }
         tbody td:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-left: 1px solid transparent; }
         tbody td:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-right: 1px solid transparent; }
@@ -480,7 +480,7 @@
                             
                             <div class="flex flex-wrap items-center gap-2">
                                 <div class="w-28">
-                                    <select id="staff-collection" onchange="applyCollectionFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="staff-collection" onchange="applyFilters('collection')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Staff: All</option>
                                         <option value="-">-</option>
                                         <option value="FATIHAH">FATIHAH</option>
@@ -491,7 +491,7 @@
                                 </div>
                                 
                                 <div class="w-32">
-                                    <select id="status-collection" onchange="applyCollectionFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="status-collection" onchange="applyFilters('collection')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Status: All</option>
                                         <option value="Completed">Completed</option>
                                         <option value="Pending For Approval">Pending</option>
@@ -500,7 +500,7 @@
                                 </div>
                                 
                                 <div class="w-28">
-                                    <select id="tahun-collection" onchange="applyCollectionFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="tahun-collection" onchange="applyFilters('collection')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Year: All</option>
                                         <option value="2024">2024</option>
                                         <option value="2025">2025</option>
@@ -579,7 +579,7 @@
                             
                             <div class="flex flex-wrap items-center gap-2">
                                 <div class="w-28">
-                                    <select id="staff-approvals" onchange="applyApprovalsFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="staff-approvals" onchange="applyFilters('approvals')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Staff: All</option>
                                         <option value="-">-</option>
                                         <option value="FATIHAH">FATIHAH</option>
@@ -589,8 +589,14 @@
                                     </select>
                                 </div>
                                 
+                                <div class="w-32 hidden" id="status-wrap-approvals">
+                                    <select id="status-approvals" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                        <option value="Pending For Approval">Pending</option>
+                                    </select>
+                                </div>
+                                
                                 <div class="w-28">
-                                    <select id="tahun-approvals" onchange="applyApprovalsFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="tahun-approvals" onchange="applyFilters('approvals')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Year: All</option>
                                         <option value="2024">2024</option>
                                         <option value="2025">2025</option>
@@ -674,17 +680,27 @@
                 <div id="view-reports" class="tab-pane flex-col flex-1 overflow-y-auto">
                     <h2 class="text-lg font-bold text-gray-900 dark:text-white font-montserrat mb-6">Analytics Catalog</h2>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                        <!-- Top Keywords -->
+                        
+                        <!-- NEW: Approved Records Percentage -->
                         <div class="glass-panel p-5 rounded-2xl shadow-soft h-[300px] flex flex-col hover-lift">
-                            <h3 class="font-bold text-gray-800 dark:text-white text-xs mb-4">Top Keywords Searched</h3>
-                            <div class="relative w-full flex-1 min-h-[150px] flex items-center justify-center pb-2"><canvas id="chart-keywords"></canvas></div>
+                            <h3 class="font-bold text-gray-800 dark:text-white text-xs mb-4">Approved Records Percentage</h3>
+                            <div id="approved-percentage-container" class="relative w-full flex-1 flex flex-col items-center justify-center pb-2">
+                                <div class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-2 font-montserrat">0%</div>
+                                <div class="text-sm font-bold text-gray-700 dark:text-gray-300">Approved Records</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mt-4 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg w-full text-center">
+                                    <span class="block mb-1">Approved: <b>0</b></span>
+                                    <span class="block">Total Records: <b>0</b></span>
+                                </div>
+                            </div>
                         </div>
+
                         <!-- Popular Fields -->
                         <div class="glass-panel p-5 rounded-2xl shadow-soft h-[300px] flex flex-col hover-lift">
                             <h3 class="font-bold text-gray-800 dark:text-white text-xs mb-4">Most Popular Subjects</h3>
                             <div class="relative w-full flex-1 min-h-[150px] flex items-center justify-center pb-2"><canvas id="chart-fields"></canvas></div>
                         </div>
-                        <!-- Staff Search Trends -->
+                        
+                        <!-- Staff Search Trends (Now a Bar Chart) -->
                         <div class="glass-panel p-5 rounded-2xl shadow-soft h-[300px] flex flex-col hover-lift">
                             <h3 class="font-bold text-gray-800 dark:text-white text-xs mb-4">Staff Search Frequency</h3>
                             <div class="relative w-full flex-1 min-h-[150px] flex items-center justify-center pb-2"><canvas id="chart-trends"></canvas></div>
@@ -976,6 +992,21 @@
         }
 
         /* =====================================================================
+           FUNGSI LOG SEARCH UNTUK ANALYTICS
+           ===================================================================== */
+        function logSearchActivity(staffName, keyword) {
+            if (!staffName || staffName === "") return;
+            let logs = JSON.parse(localStorage.getItem('iku_search_logs') || '[]');
+            if (logs.length > 1000) logs = logs.slice(logs.length - 1000); 
+            logs.push({ staff: staffName, keyword: keyword, time: Date.now() });
+            localStorage.setItem('iku_search_logs', JSON.stringify(logs));
+            
+            if (currentActiveTab === 'reports') {
+                updateAnalyticsCatalog();
+            }
+        }
+
+        /* =====================================================================
            FUNGSI TOGGLE SIDEBAR
            ===================================================================== */
         function toggleSidebar() {
@@ -993,6 +1024,12 @@
         /* =====================================================================
            FUNGSI PERTUKARAN TAB
            ===================================================================== */
+        let tabStates = {
+            'collection': { search: '', lastSearch: '', staff: '', status: '', tahun: '', page: 1, filtered: [] },
+            'approvals': { search: '', lastSearch: '', staff: '', status: 'Pending For Approval', tahun: '', page: 1, filtered: [] },
+            'dashboard': { staff: '', status: '', tahun: '' }
+        };
+
         function switchTab(tabId, clickedElement) {
             document.querySelectorAll('.tab-pane').forEach(pane => {
                 pane.classList.add('hidden');
@@ -1025,12 +1062,12 @@
             else if (tabId === 'collection') {
                 pageTitle.innerHTML = "Records";
                 pageSubtitle.textContent = "Full list of all executive collections and status.";
-                applyCollectionFilter(true);
+                applyFilters('collection', true);
             } 
             else if (tabId === 'approvals') {
                 pageTitle.innerHTML = "Approvals Queue";
                 pageSubtitle.textContent = "Action required for pending files.";
-                applyApprovalsFilter(true);
+                applyFilters('approvals', true);
             } 
             else if (tabId === 'staff') {
                 pageTitle.innerHTML = "Staff Management";
@@ -1047,101 +1084,106 @@
         /* =====================================================================
            ANALYTICS CATALOG DYNAMIC GENERATION
            ===================================================================== */
-        let chartKeywordsInstance = null;
         let chartFieldsInstance = null;
         let chartTrendsInstance = null;
 
         function updateAnalyticsCatalog() {
             if (!masterData || masterData.length === 0) return;
 
-            let wordCounts = {};
-            const stopWords = ['the', 'of', 'and', 'a', 'to', 'in', 'for', 'on', 'with', 'an', 'by', 'is', 'at', 'dari', 'dan', 'yang', 'untuk', 'di', 'ke', 'ini', 'itu', 'pada', 'dalam'];
-            masterData.forEach(row => {
-                if(row.title) {
-                    let words = row.title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
-                    words.forEach(w => {
-                        if (w.length > 3 && !stopWords.includes(w)) {
-                            wordCounts[w] = (wordCounts[w] || 0) + 1;
-                        }
-                    });
-                }
-            });
-            let sortedWords = Object.entries(wordCounts).sort((a,b) => b[1] - a[1]).slice(0, 5);
-            let keywordLabels = sortedWords.map(x => x[0].toUpperCase());
-            let keywordData = sortedWords.map(x => x[1]);
-
-            if (keywordLabels.length === 0) {
-                keywordLabels = ['DATA', 'SYSTEM', 'TEST', 'RECORD', 'INFO'];
-                keywordData = [0, 0, 0, 0, 0];
-            }
-
-            let fieldCounts = { 'Computer/Tech': 0, 'Science': 0, 'Social Sciences': 0, 'Others': 0 };
-            masterData.forEach(row => {
-                let callNo = (row.callNo082 || "").trim();
-                if(callNo.startsWith('0') || callNo.startsWith('6')) fieldCounts['Computer/Tech']++;
-                else if(callNo.startsWith('5')) fieldCounts['Science']++;
-                else if(callNo.startsWith('3')) fieldCounts['Social Sciences']++;
-                else fieldCounts['Others']++;
-            });
-            let fieldLabels = Object.keys(fieldCounts);
-            let fieldData = Object.values(fieldCounts);
-
-            let monthCountsArr = [0,0,0,0,0,0,0,0,0,0,0,0];
-            let monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-            masterData.forEach(row => {
-                let dateStr = row.date || ""; 
-                let parts = dateStr.split('/');
-                if(parts.length === 3) {
-                    let mIndex = parseInt(parts[1], 10) - 1;
-                    if(mIndex >= 0 && mIndex < 12) {
-                        monthCountsArr[mIndex]++;
-                    }
-                }
-            });
-            
-            let currentMonth = new Date().getMonth();
-            let trendLabels = [];
-            let trendData = [];
-            for (let i = 4; i >= 0; i--) {
-                let m = (currentMonth - i + 12) % 12;
-                trendLabels.push(monthNames[m]);
-                trendData.push(monthCountsArr[m]);
-            }
-
-            const summaryEl = document.getElementById('analytics-summary-text');
-            if(summaryEl) {
-                const topField = fieldLabels[fieldData.indexOf(Math.max(...fieldData))] || '-';
-                summaryEl.innerHTML = `Analitik dijana daripada <b>${masterData.length}</b> rekod keseluruhan. Kata kunci carian tertinggi adalah <b>"${keywordLabels[0] || '-'}"</b>. Majoriti bahan merangkumi bidang <b>${topField}</b>.`;
-            }
-
             const textColor = isDarkMode() ? '#94a3b8' : '#64748b';
 
-            if (chartKeywordsInstance) chartKeywordsInstance.destroy();
-            chartKeywordsInstance = new Chart(document.getElementById('chart-keywords').getContext('2d'), {
-                type: 'bar',
-                data: { labels: keywordLabels, datasets: [{ data: keywordData, backgroundColor: '#6366f1', borderRadius: 4, barThickness: 15 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: {display: false} }, scales: { x:{display:false}, y:{grid:{display:false}, ticks:{font:{size:9}, color:textColor}} } }
-            });
+            // 1. Approved Records Percentage
+            const totalRecords = masterData.length;
+            const approvedRecords = masterData.filter(r => (r.status || "").toLowerCase().trim() === 'completed').length;
+            const approvedPercentage = totalRecords > 0 ? Math.round((approvedRecords / totalRecords) * 100) : 0;
             
+            const approvedContainer = document.getElementById('approved-percentage-container');
+            if(approvedContainer) {
+                approvedContainer.innerHTML = `
+                    <div class="text-5xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-2 font-montserrat">${approvedPercentage}%</div>
+                    <div class="text-sm font-bold text-gray-700 dark:text-gray-300">Approved Records</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mt-4 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg w-full text-center">
+                        <span class="block mb-1">Approved: <b>${approvedRecords.toLocaleString()}</b></span>
+                        <span class="block">Total Records: <b>${totalRecords.toLocaleString()}</b></span>
+                    </div>
+                `;
+            }
+
+            // 2. Most Popular Subjects (from Title)
+            let subjectCounts = { 'Library Science': 0, 'Information Technology': 0, 'Education': 0, 'History': 0, 'Others': 0 };
+            
+            masterData.forEach(row => {
+                let t = (row.title || "").toLowerCase();
+                if (t.includes('library') || t.includes('catalog') || t.includes('archive') || t.includes('bibliograph')) {
+                    subjectCounts['Library Science']++;
+                } else if (t.includes('computer') || t.includes('software') || t.includes('data') || t.includes('tech') || t.includes('web') || t.includes('internet') || t.includes('system')) {
+                    subjectCounts['Information Technology']++;
+                } else if (t.includes('education') || t.includes('teach') || t.includes('learn') || t.includes('school') || t.includes('student')) {
+                    subjectCounts['Education']++;
+                } else if (t.includes('history') || t.includes('century') || t.includes('past')) {
+                    subjectCounts['History']++;
+                } else {
+                    subjectCounts['Others']++;
+                }
+            });
+
+            let fieldLabels = Object.keys(subjectCounts);
+            let fieldData = Object.values(subjectCounts);
+
             if (chartFieldsInstance) chartFieldsInstance.destroy();
             chartFieldsInstance = new Chart(document.getElementById('chart-fields').getContext('2d'), {
                 type: 'doughnut',
-                data: { labels: fieldLabels, datasets: [{ data: fieldData, backgroundColor: ['#8b5cf6', '#10b981', '#f59e0b', '#cbd5e1'], borderWidth: 0 }] },
+                data: { labels: fieldLabels, datasets: [{ data: fieldData, backgroundColor: ['#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#cbd5e1'], borderWidth: 0 }] },
                 options: { 
-                    responsive: true, 
-                    maintainAspectRatio: false, 
-                    cutout: '65%', 
-                    layout: { padding: { top: 10, bottom: 10, left: 10, right: 10 } },
-                    plugins: { legend: { position: 'right', labels:{usePointStyle:true, boxWidth:6, font:{size:9}, color:textColor} } } 
+                    responsive: true, maintainAspectRatio: false, cutout: '65%', layout: { padding: { top: 10, bottom: 10, left: 10, right: 10 } },
+                    plugins: { 
+                        legend: { position: 'right', labels:{usePointStyle:true, boxWidth:6, font:{size:9}, color:textColor} },
+                        tooltip: { callbacks: { label: function(context) { let value = context.raw; let percentage = totalRecords > 0 ? Math.round((value / totalRecords) * 100) : 0; return ` ${context.label}: ${percentage}% (${value})`; } } }
+                    } 
                 }
             });
+
+            // 3. Staff Search Frequency
+            let searchLogs = JSON.parse(localStorage.getItem('iku_search_logs') || '[]');
+            let staffSearchCounts = {};
+            searchLogs.forEach(log => {
+                staffSearchCounts[log.staff] = (staffSearchCounts[log.staff] || 0) + 1;
+            });
             
+            if (Object.keys(staffSearchCounts).length === 0) {
+                staffSearchCounts = { [currentUserName || 'STAFF']: 0 };
+            }
+
+            let searchStaffLabels = Object.keys(staffSearchCounts);
+            let searchStaffData = Object.values(staffSearchCounts);
+
             if (chartTrendsInstance) chartTrendsInstance.destroy();
             chartTrendsInstance = new Chart(document.getElementById('chart-trends').getContext('2d'), {
-                type: 'line',
-                data: { labels: trendLabels, datasets: [{ label: 'Searches', data: trendData, borderColor: '#3b82f6', tension: 0.4, fill: true, backgroundColor: 'rgba(59, 130, 246, 0.1)' }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: {display: false} }, scales: { x:{grid:{display:false}, ticks:{color:textColor, font:{size:9}}}, y:{display:false} } }
+                type: 'bar',
+                data: { labels: searchStaffLabels, datasets: [{ label: 'Searches', data: searchStaffData, backgroundColor: '#10b981', borderRadius: 4, barThickness: 25 }] },
+                options: { 
+                    responsive: true, maintainAspectRatio: false, plugins: { legend: {display: false} }, 
+                    scales: { x:{grid:{display:false}, ticks:{color:textColor, font:{size:9}}}, y:{beginAtZero: true, ticks:{stepSize:1, color:textColor, font:{size:9}}} } 
+                }
             });
+
+            // Catalog Summary Text Update
+            const summaryEl = document.getElementById('analytics-summary-text');
+            if(summaryEl) {
+                let topSubject = 'Others';
+                let maxSubjCount = -1;
+                for (let s in subjectCounts) {
+                    if (subjectCounts[s] > maxSubjCount) { maxSubjCount = subjectCounts[s]; topSubject = s; }
+                }
+                
+                let topSearcher = '-';
+                let maxSearchCount = -1;
+                for (let s in staffSearchCounts) {
+                    if (staffSearchCounts[s] > maxSearchCount) { maxSearchCount = staffSearchCounts[s]; topSearcher = s; }
+                }
+
+                summaryEl.innerHTML = `Analisis terkini daripada <b>${totalRecords.toLocaleString()}</b> rekod keseluruhan sistem. <b>${approvedPercentage}%</b> daripada rekod telah berjaya diluluskan. Bidang paling banyak dicatatkan ialah <b>${topSubject}</b> (${totalRecords > 0 ? Math.round((maxSubjCount/totalRecords)*100) : 0}%). Staf paling aktif membuat carian ialah <b>${topSearcher}</b> dengan ${maxSearchCount} carian.`;
+            }
         }
 
         /* =====================================================================
@@ -1377,8 +1419,8 @@
                 currentUserRole = role;
                 
                 tabStates = {
-                    'collection': { search: '', staff: '', status: '', tahun: '', page: 1, filtered: [] },
-                    'approvals': { search: '', staff: '', status: 'Pending For Approval', tahun: '', page: 1, filtered: [] },
+                    'collection': { search: '', lastSearch: '', staff: '', status: '', tahun: '', page: 1, filtered: [] },
+                    'approvals': { search: '', lastSearch: '', staff: '', status: 'Pending For Approval', tahun: '', page: 1, filtered: [] },
                     'dashboard': { staff: '', status: '', tahun: '' }
                 };
 
@@ -1490,8 +1532,7 @@
         function debouncedSearch(tabId) {
             clearTimeout(searchDebounceTimer);
             searchDebounceTimer = setTimeout(() => {
-                if (tabId === 'collection') applyCollectionFilter();
-                else if (tabId === 'approvals') applyApprovalsFilter();
+                applyFilters(tabId);
             }, 300); 
         }
 
@@ -1510,151 +1551,110 @@
             updateDashboardStats();
         }
         
-        function applyCollectionFilter(preservePage = false) {
-            const searchVal = document.getElementById('search-collection') ? document.getElementById('search-collection').value.toLowerCase().trim() : "";
-            const staffVal = document.getElementById('staff-collection') ? document.getElementById('staff-collection').value : "";
-            const statusVal = document.getElementById('status-collection') ? document.getElementById('status-collection').value : "";
-            const tahunVal = document.getElementById('tahun-collection') ? document.getElementById('tahun-collection').value : "";
+        function applyFilters(tabId, preservePage = false) {
+            if (!tabId) tabId = currentActiveTab;
+            if (tabId !== 'collection' && tabId !== 'approvals') return;
 
-            recordData = masterData.filter(row => {
+            const searchVal = document.getElementById(`search-${tabId}`).value.toLowerCase().trim();
+            const staffVal = document.getElementById(`staff-${tabId}`).value;
+            const tahunVal = document.getElementById(`tahun-${tabId}`).value;
+            
+            let statusVal = "";
+            if (tabId === 'approvals') {
+                statusVal = 'pending for approval';
+            } else {
+                statusVal = document.getElementById(`status-${tabId}`).value;
+            }
+
+            // Track Real User Search Frequency for Analytics
+            if (searchVal !== "" && searchVal !== tabStates[tabId].lastSearch) {
+                tabStates[tabId].lastSearch = searchVal;
+                logSearchActivity(currentUserName, searchVal);
+            } else if (searchVal === "") {
+                tabStates[tabId].lastSearch = "";
+            }
+
+            tabStates[tabId].search = searchVal;
+            tabStates[tabId].staff = staffVal;
+            tabStates[tabId].tahun = tahunVal;
+            tabStates[tabId].status = statusVal;
+
+            tabStates[tabId].filtered = masterData.filter(row => {
                 let match = true;
+                
                 if (searchVal !== "") {
                     const titleMatch = (row.title || "").toLowerCase().includes(searchVal);
                     const accMatch = (row.accession || "").toLowerCase().includes(searchVal);
                     if (!titleMatch && !accMatch) match = false;
                 }
-                if (staffVal !== "" && getStaffDisplay(row.staff) !== staffVal) match = false;
-                if (statusVal !== "" && (row.status || "").toLowerCase().trim() !== statusVal.toLowerCase().trim()) match = false;
-                if (tahunVal !== "" && getYearFromDate(row.date) !== tahunVal) match = false;
-                return match;
-            });
-            
-            if (!preservePage) { collectionPage = 1; } 
-            else {
-                const maxPages = Math.ceil(recordData.length / rowsPerPage) || 1;
-                if (collectionPage > maxPages) collectionPage = maxPages;
-            }
-            
-            if (currentActiveTab === 'collection') renderRecordTable();
-        }
-
-        function applyApprovalsFilter(preservePage = false) {
-            const searchVal = document.getElementById('search-approvals') ? document.getElementById('search-approvals').value.toLowerCase().trim() : "";
-            const staffVal = document.getElementById('staff-approvals') ? document.getElementById('staff-approvals').value : "";
-            const tahunVal = document.getElementById('tahun-approvals') ? document.getElementById('tahun-approvals').value : "";
-
-            approvalData = masterData.filter(row => {
-                let match = true;
-                if ((row.status || "").toLowerCase().trim() !== 'pending for approval') match = false; 
-
-                if (searchVal !== "") {
-                    const titleMatch = (row.title || "").toLowerCase().includes(searchVal);
-                    const accMatch = (row.accession || "").toLowerCase().includes(searchVal);
-                    if (!titleMatch && !accMatch) match = false;
+                
+                if (staffVal !== "") {
+                    if (getStaffDisplay(row.staff) !== staffVal) match = false;
                 }
-                if (staffVal !== "" && getStaffDisplay(row.staff) !== staffVal) match = false;
-                if (tahunVal !== "" && getYearFromDate(row.date) !== tahunVal) match = false;
+                
+                if (statusVal !== "") {
+                    if ((row.status || "").toLowerCase().trim() !== statusVal.toLowerCase().trim()) match = false;
+                }
+                
+                if (tahunVal !== "") {
+                    if (getYearFromDate(row.date) !== tahunVal) match = false;
+                }
+                
                 return match;
             });
             
-            if (!preservePage) { approvalsPage = 1; } 
-            else {
-                const maxPages = Math.ceil(approvalData.length / rowsPerPage) || 1;
-                if (approvalsPage > maxPages) approvalsPage = maxPages;
+            if (!preservePage) {
+                tabStates[tabId].page = 1; 
+            } else {
+                const maxPages = Math.ceil(tabStates[tabId].filtered.length / rowsPerPage) || 1;
+                if (tabStates[tabId].page > maxPages) tabStates[tabId].page = maxPages;
             }
             
-            if (currentActiveTab === 'approvals') renderApprovalTable();
+            renderTable(tabId);
         }
 
         function prevPage(tabId) {
-            if (tabId === 'collection' && collectionPage > 1) { collectionPage--; renderRecordTable(); }
-            else if (tabId === 'approvals' && approvalsPage > 1) { approvalsPage--; renderApprovalTable(); }
+            if (tabStates[tabId].page > 1) { 
+                tabStates[tabId].page--; 
+                renderTable(tabId); 
+            }
         }
         function nextPage(tabId) {
-            if (tabId === 'collection' && collectionPage * rowsPerPage < recordData.length) { collectionPage++; renderRecordTable(); }
-            else if (tabId === 'approvals' && approvalsPage * rowsPerPage < approvalData.length) { approvalsPage++; renderApprovalTable(); }
+            if (tabStates[tabId].page * rowsPerPage < tabStates[tabId].filtered.length) { 
+                tabStates[tabId].page++; 
+                renderTable(tabId); 
+            }
         }
 
         /* =====================================================================
            TABLE RENDERING
            ===================================================================== */
-        function renderRecordTable() {
-            const tbody = document.getElementById('table-body-collection');
+        function renderTable(tabId) {
+            const tbody = document.getElementById(`table-body-${tabId}`);
             if (!tbody) return;
-            const paginationDiv = document.getElementById('pagination-collection');
-            const tableContainer = tbody.closest('.custom-scrollbar');
-            const currentTableScroll = tableContainer ? tableContainer.scrollTop : 0;
             
-            paginationDiv.classList.remove('hidden');
-            const startIndex = (collectionPage - 1) * rowsPerPage;
-            const endIndex = startIndex + rowsPerPage;
-            const paginatedData = recordData.slice(startIndex, endIndex);
-            
-            const fragment = document.createDocumentFragment();
-            
-            if (paginatedData.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="11" class="px-5 py-10 text-center text-gray-500 font-medium italic text-sm">No records found.</td></tr>`; 
-            } else {
-                const currentRows = Array.from(tbody.querySelectorAll(`tr[id^="row-collection-"]`));
-                const paginatedIds = paginatedData.map(r => `row-collection-${r.id}`);
-                
-                currentRows.forEach(row => { if (!paginatedIds.includes(row.id)) row.remove(); });
-
-                paginatedData.forEach((row, index) => {
-                    const rowId = `row-collection-${row.id}`;
-                    let tr = document.getElementById(rowId);
-                    
-                    const isEditing = (editingId === row.id && currentActiveTab === 'collection');
-                    const html = generateRowHTML(row, isEditing, false, 'collection');
-                    const className = isEditing ? 'editing-row' : '';
-                    
-                    if (tr) {
-                        if (tr.innerHTML !== html || tr.className !== className) {
-                            tr.innerHTML = html;
-                            tr.className = className;
-                        }
-                        if (tbody.children[index] !== tr) {
-                            tbody.insertBefore(tr, tbody.children[index]);
-                        }
-                    } else {
-                        tr = document.createElement('tr');
-                        tr.id = rowId;
-                        tr.className = className;
-                        tr.innerHTML = html;
-                        if (tbody.children[index]) { tbody.insertBefore(tr, tbody.children[index]); } 
-                        else { fragment.appendChild(tr); }
-                    }
-                });
-                if (fragment.children.length > 0) tbody.appendChild(fragment);
-            }
-            
-            const infoEnd = Math.min(startIndex + rowsPerPage, recordData.length);
-            const infoEl = document.getElementById('page-info-collection');
-            if(infoEl) infoEl.textContent = `Showing ${recordData.length > 0 ? startIndex + 1 : 0} to ${infoEnd} of ${recordData.length} records`;
-
-            if (tableContainer) tableContainer.scrollTop = currentTableScroll;
-        }
-
-        function renderApprovalTable() {
-            const tbody = document.getElementById('table-body-approvals');
-            if (!tbody) return;
-            const paginationDiv = document.getElementById('pagination-approvals');
+            const paginationDiv = document.getElementById(`pagination-${tabId}`);
             const tableContainer = tbody.closest('.custom-scrollbar');
             const currentTableScroll = tableContainer ? tableContainer.scrollTop : 0;
             
             const fragment = document.createDocumentFragment();
+            const filteredDataset = tabStates[tabId].filtered;
+            const currentPage = tabStates[tabId].page;
             
-            if (currentUserRole === 'rosli') {
+            if (currentUserRole === 'rosli' && tabId === 'approvals') {
                 paginationDiv.classList.add('hidden'); 
+                
                 let groupedData = {};
-                approvalData.forEach(row => {
+                filteredDataset.forEach(row => {
                     const sName = getStaffDisplay(row.staff);
                     if (!groupedData[sName]) groupedData[sName] = [];
                     groupedData[sName].push(row);
                 });
 
                 if(Object.keys(groupedData).length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="11" class="px-5 py-10 text-center text-gray-500 font-medium italic text-sm">No records require your action.</td></tr>`;
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td colspan="11" class="px-5 py-10 text-center text-gray-500 font-medium italic text-sm">No records require your action.</td>`;
+                    fragment.appendChild(tr);
                 } else {
                     for (let staffName in groupedData) {
                         const staffRows = groupedData[staffName];
@@ -1672,33 +1672,37 @@
                         fragment.appendChild(groupHeader);
                         staffRows.forEach(row => {
                             const tr = document.createElement('tr');
-                            tr.innerHTML = generateRowHTML(row, false, true, 'approvals'); 
+                            tr.innerHTML = generateRowHTML(row, false, true, tabId); 
                             fragment.appendChild(tr);
                         });
                     }
-                    tbody.innerHTML = '';
-                    tbody.appendChild(fragment);
                 }
+                tbody.innerHTML = '';
+                tbody.appendChild(fragment);
             } else {
                 paginationDiv.classList.remove('hidden');
-                const startIndex = (approvalsPage - 1) * rowsPerPage;
+                const startIndex = (currentPage - 1) * rowsPerPage;
                 const endIndex = startIndex + rowsPerPage;
-                const paginatedData = approvalData.slice(startIndex, endIndex);
+                const paginatedData = filteredDataset.slice(startIndex, endIndex);
                 
                 if (paginatedData.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="11" class="px-5 py-10 text-center text-gray-500 font-medium italic text-sm">No pending records found.</td></tr>`; 
+                    tbody.innerHTML = `<tr><td colspan="11" class="px-5 py-10 text-center text-gray-500 font-medium italic text-sm">No records found.</td></tr>`; 
                 } else {
-                    const currentRows = Array.from(tbody.querySelectorAll(`tr[id^="row-approvals-"]`));
-                    const paginatedIds = paginatedData.map(r => `row-approvals-${r.id}`);
+                    const currentRows = Array.from(tbody.querySelectorAll(`tr[id^="row-${tabId}-"]`));
+                    const paginatedIds = paginatedData.map(r => `row-${tabId}-${r.id}`);
                     
-                    currentRows.forEach(row => { if (!paginatedIds.includes(row.id)) row.remove(); });
+                    currentRows.forEach(row => {
+                        if (!paginatedIds.includes(row.id)) {
+                            row.remove();
+                        }
+                    });
 
                     paginatedData.forEach((row, index) => {
-                        const rowId = `row-approvals-${row.id}`;
+                        const rowId = `row-${tabId}-${row.id}`;
                         let tr = document.getElementById(rowId);
                         
-                        const isEditing = (editingId === row.id && currentActiveTab === 'approvals');
-                        const html = generateRowHTML(row, isEditing, false, 'approvals');
+                        const isEditing = (editingId === row.id && currentActiveTab === tabId);
+                        const html = generateRowHTML(row, isEditing, false, tabId);
                         const className = isEditing ? 'editing-row' : '';
                         
                         if (tr) {
@@ -1714,16 +1718,22 @@
                             tr.id = rowId;
                             tr.className = className;
                             tr.innerHTML = html;
-                            if (tbody.children[index]) { tbody.insertBefore(tr, tbody.children[index]); } 
-                            else { fragment.appendChild(tr); }
+                            
+                            if (tbody.children[index]) {
+                                tbody.insertBefore(tr, tbody.children[index]);
+                            } else {
+                                fragment.appendChild(tr);
+                            }
                         }
                     });
-                    if (fragment.children.length > 0) tbody.appendChild(fragment);
+                    if (fragment.children.length > 0) {
+                        tbody.appendChild(fragment);
+                    }
                 }
                 
-                const infoEnd = Math.min(startIndex + rowsPerPage, approvalData.length);
-                const infoEl = document.getElementById('page-info-approvals');
-                if(infoEl) infoEl.textContent = `Showing ${approvalData.length > 0 ? startIndex + 1 : 0} to ${infoEnd} of ${approvalData.length} records`;
+                const infoEnd = Math.min(startIndex + rowsPerPage, filteredDataset.length);
+                const infoEl = document.getElementById(`page-info-${tabId}`);
+                if(infoEl) infoEl.textContent = `Showing ${filteredDataset.length > 0 ? startIndex + 1 : 0} to ${infoEnd} of ${filteredDataset.length} records`;
             }
 
             if (tableContainer) tableContainer.scrollTop = currentTableScroll;
@@ -1756,8 +1766,8 @@
                 masterData[index] = record;
                 
                 applyDashboardFilter();
-                applyCollectionFilter(true);
-                applyApprovalsFilter(true);
+                applyFilters('collection', true);
+                applyFilters('approvals', true);
                 
                 server.withSuccessHandler(function() {
                     console.log(`[APPROVE ROW SUCCESS] Rekod ID: ${id} telah diluluskan.`);
@@ -1792,8 +1802,8 @@
                 masterData[index] = record;
                 
                 applyDashboardFilter();
-                applyCollectionFilter(true);
-                applyApprovalsFilter(true);
+                applyFilters('collection', true);
+                applyFilters('approvals', true);
                 
                 server.withSuccessHandler(function() {
                     console.log(`[REOPEN ROW SUCCESS] Rekod ID: ${id} dibuka semula.`);
@@ -1935,8 +1945,7 @@
             try {
                 console.log(`[EDIT MODE] Mengaktifkan edit untuk ID: ${id} pada tab: ${tabId}`);
                 editingId = id; 
-                if (tabId === 'collection') renderRecordTable();
-                else if (tabId === 'approvals') renderApprovalTable();
+                renderTable(tabId); 
             } catch(e) {
                 console.error("Ralat pada editRow:", e);
             }
@@ -1946,8 +1955,7 @@
             try {
                 console.log(`[CANCEL EDIT] Membatalkan edit pada tab: ${tabId}`);
                 editingId = null; 
-                if (tabId === 'collection') renderRecordTable();
-                else if (tabId === 'approvals') renderApprovalTable();
+                renderTable(tabId); 
             } catch(e) {
                 console.error("Ralat pada cancelEdit:", e);
             }
@@ -2006,8 +2014,8 @@
                     editingId = null;
                     
                     applyDashboardFilter();
-                    applyCollectionFilter(true);
-                    applyApprovalsFilter(true);
+                    applyFilters('collection', true);
+                    applyFilters('approvals', true);
                     
                     fetchDataFromGoogleSheet(true);
                 }).updateRow(updatedRecord);
