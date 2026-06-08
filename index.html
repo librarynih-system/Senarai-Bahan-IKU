@@ -477,7 +477,7 @@
                             
                             <div class="flex flex-wrap items-center gap-2">
                                 <div class="w-28">
-                                    <select id="staff-collection" onchange="applyCollectionFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="staff-collection" onchange="applyFilters('collection')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Staff: All</option>
                                         <option value="-">-</option>
                                         <!-- Populated by JS -->
@@ -485,7 +485,7 @@
                                 </div>
                                 
                                 <div class="w-32">
-                                    <select id="status-collection" onchange="applyCollectionFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="status-collection" onchange="applyFilters('collection')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Status: All</option>
                                         <option value="Completed">Completed</option>
                                         <option value="Pending For Approval">Pending</option>
@@ -494,7 +494,7 @@
                                 </div>
                                 
                                 <div class="w-28">
-                                    <select id="tahun-collection" onchange="applyCollectionFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="tahun-collection" onchange="applyFilters('collection')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Year: All</option>
                                         <option value="2024">2024</option>
                                         <option value="2025">2025</option>
@@ -573,7 +573,7 @@
                             
                             <div class="flex flex-wrap items-center gap-2">
                                 <div class="w-28">
-                                    <select id="staff-approvals" onchange="applyApprovalsFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="staff-approvals" onchange="applyFilters('approvals')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Staff: All</option>
                                         <option value="-">-</option>
                                         <!-- Populated by JS -->
@@ -587,7 +587,7 @@
                                 </div>
                                 
                                 <div class="w-28">
-                                    <select id="tahun-approvals" onchange="applyApprovalsFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="tahun-approvals" onchange="applyFilters('approvals')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Year: All</option>
                                         <option value="2024">2024</option>
                                         <option value="2025">2025</option>
@@ -812,11 +812,7 @@
            ===================================================================== */
         let masterData = []; // Full Data from API
         let dashboardData = []; // Data untuk chart sahaja
-        let recordData = []; // Data untuk table Koleksi
-        let approvalData = []; // Data untuk table Approval
         
-        let collectionPage = 1;
-        let approvalsPage = 1;
         const rowsPerPage = 100;
         
         let currentUserRole = ""; 
@@ -1065,6 +1061,12 @@
         /* =====================================================================
            FUNGSI PERTUKARAN TAB
            ===================================================================== */
+        let tabStates = {
+            'collection': { search: '', lastSearch: '', staff: '', status: '', tahun: '', page: 1, filtered: [] },
+            'approvals': { search: '', lastSearch: '', staff: '', status: 'Pending For Approval', tahun: '', page: 1, filtered: [] },
+            'dashboard': { staff: '', status: '', tahun: '' }
+        };
+
         function switchTab(tabId, clickedElement) {
             document.querySelectorAll('.tab-pane').forEach(pane => {
                 pane.classList.add('hidden');
@@ -1097,12 +1099,12 @@
             else if (tabId === 'collection') {
                 pageTitle.innerHTML = "Records";
                 pageSubtitle.textContent = "Full list of all executive collections and status.";
-                applyCollectionFilter(true);
+                applyFilters('collection', true);
             } 
             else if (tabId === 'approvals') {
                 pageTitle.innerHTML = "Approvals Queue";
                 pageSubtitle.textContent = "Action required for pending files.";
-                applyApprovalsFilter(true);
+                applyFilters('approvals', true);
             } 
             else if (tabId === 'staff') {
                 pageTitle.innerHTML = "Staff Management";
@@ -1527,9 +1529,7 @@
             
             masterData = [];
             dashboardData = [];
-            recordData = [];
-            approvalData = [];
-
+            
             if(document.getElementById('table-body-collection')) document.getElementById('table-body-collection').innerHTML = '';
             if(document.getElementById('table-body-approvals')) document.getElementById('table-body-approvals').innerHTML = '';
         }
@@ -1546,7 +1546,10 @@
         function fetchDataFromGoogleSheet(isSilent = false) {
             if (!isSilent) showLoading("Syncing...");
             server.withSuccessHandler(function(data) {
-                if (data) masterData = data; 
+                if (data) {
+                    masterData = data; 
+                    console.log(`[DEBUG] masterData fetched: ${masterData.length} records.`);
+                }
                 
                 if (currentActiveTab === 'dashboard') {
                     updateDashboardStats();
@@ -1646,6 +1649,7 @@
                 if (tabStates[tabId].page > maxPages) tabStates[tabId].page = maxPages;
             }
             
+            console.log(`[DEBUG] applyFilters applied for ${tabId}. Master: ${masterData.length}, Filtered: ${tabStates[tabId].filtered.length}`);
             renderTable(tabId);
         }
 
