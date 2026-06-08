@@ -298,7 +298,7 @@
                             </div>
                             
                             <div class="w-32">
-                                <select id="dash-filter-status" onchange="applyDashboardFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                <select id="dash-filter-status" onchange="updateDashboardStats()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                     <option value="">Status: All</option>
                                     <option value="Completed">Completed</option>
                                     <option value="Pending For Approval">Pending</option>
@@ -307,7 +307,7 @@
                             </div>
                             
                             <div class="w-28">
-                                <select id="dash-filter-tahun" onchange="applyDashboardFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                <select id="dash-filter-tahun" onchange="updateDashboardStats()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                     <option value="">Year: All</option>
                                     <option value="2024">2024</option>
                                     <option value="2025">2025</option>
@@ -477,7 +477,7 @@
                             
                             <div class="flex flex-wrap items-center gap-2">
                                 <div class="w-28">
-                                    <select id="staff-collection" onchange="applyFilters('collection')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="staff-collection" onchange="applyCollectionFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Staff: All</option>
                                         <option value="-">-</option>
                                         <!-- Populated by JS -->
@@ -485,7 +485,7 @@
                                 </div>
                                 
                                 <div class="w-32">
-                                    <select id="status-collection" onchange="applyFilters('collection')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="status-collection" onchange="applyCollectionFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Status: All</option>
                                         <option value="Completed">Completed</option>
                                         <option value="Pending For Approval">Pending</option>
@@ -494,7 +494,7 @@
                                 </div>
                                 
                                 <div class="w-28">
-                                    <select id="tahun-collection" onchange="applyFilters('collection')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="tahun-collection" onchange="applyCollectionFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Year: All</option>
                                         <option value="2024">2024</option>
                                         <option value="2025">2025</option>
@@ -573,7 +573,7 @@
                             
                             <div class="flex flex-wrap items-center gap-2">
                                 <div class="w-28">
-                                    <select id="staff-approvals" onchange="applyFilters('approvals')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="staff-approvals" onchange="applyApprovalsFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Staff: All</option>
                                         <option value="-">-</option>
                                         <!-- Populated by JS -->
@@ -587,7 +587,7 @@
                                 </div>
                                 
                                 <div class="w-28">
-                                    <select id="tahun-approvals" onchange="applyFilters('approvals')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
+                                    <select id="tahun-approvals" onchange="applyApprovalsFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Year: All</option>
                                         <option value="2024">2024</option>
                                         <option value="2025">2025</option>
@@ -827,8 +827,6 @@
         /* =====================================================================
            STAFF MANAGEMENT DATABASE
            ===================================================================== */
-        const staffOptions = ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA"];
-
         let defaultStaffDB = [
             { id: 1, name: "FATIHAH", position: "Data Entry Officer", grade: "S19", email: "fatihah@library.iku.gov.my", phone: "012-3456789", image: "", status: "Active" },
             { id: 2, name: "FAZILAH", position: "Senior Librarian", grade: "S29", email: "fazilah@library.iku.gov.my", phone: "013-4567890", image: "", status: "Active" },
@@ -840,27 +838,11 @@
         let editingStaffId = null;
 
         const getStaffOptions = () => {
-            let options = [...staffOptions];
-            
-            staffDB.forEach(s => {
-                if (s.name && s.name.trim() !== '') {
-                    if (currentUserRole !== 'admin' && s.status === 'Inactive') return;
-                    
-                    let shortName = s.name.trim().split(' ')[0].toUpperCase();
-                    if (!options.includes(shortName) && !["EYZAN", "ALIA", "NABIL", "ADMIN"].includes(shortName)) {
-                        options.push(shortName);
-                    }
-                }
-            });
-
             if (currentUserRole === 'admin') {
-                const adminExtras = ["EYZAN", "ALIA", "NABIL", "ADMIN"];
-                adminExtras.forEach(ext => {
-                    if (!options.includes(ext)) options.push(ext);
-                });
+                return ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA", "ADMIN", "NABIL", "EYZAN", "ALIA"];
+            } else {
+                return ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA", "ADMIN"];
             }
-            
-            return options;
         };
 
         const populateStaffDropdowns = () => {
@@ -1083,12 +1065,6 @@
         /* =====================================================================
            FUNGSI PERTUKARAN TAB
            ===================================================================== */
-        let tabStates = {
-            'collection': { search: '', lastSearch: '', staff: '', status: '', tahun: '', page: 1, filtered: [] },
-            'approvals': { search: '', lastSearch: '', staff: '', status: 'Pending For Approval', tahun: '', page: 1, filtered: [] },
-            'dashboard': { staff: '', status: '', tahun: '' }
-        };
-
         function switchTab(tabId, clickedElement) {
             document.querySelectorAll('.tab-pane').forEach(pane => {
                 pane.classList.add('hidden');
@@ -1121,12 +1097,12 @@
             else if (tabId === 'collection') {
                 pageTitle.innerHTML = "Records";
                 pageSubtitle.textContent = "Full list of all executive collections and status.";
-                applyFilters('collection', true);
+                applyCollectionFilter(true);
             } 
             else if (tabId === 'approvals') {
                 pageTitle.innerHTML = "Approvals Queue";
                 pageSubtitle.textContent = "Action required for pending files.";
-                applyFilters('approvals', true);
+                applyApprovalsFilter(true);
             } 
             else if (tabId === 'staff') {
                 pageTitle.innerHTML = "Staff Management";
@@ -1905,9 +1881,6 @@
                 }
 
                 let dynamicStaffOptions = getStaffOptions();
-                if (row.staff && row.staff !== '-' && !dynamicStaffOptions.includes(row.staff.toUpperCase())) {
-                    dynamicStaffOptions.push(row.staff.toUpperCase());
-                }
 
                 return `
                     <td class="px-3 py-3 text-center text-gray-500 font-bold text-[11px]">${row.no}</td>
@@ -1918,8 +1891,8 @@
                     <td class="px-3 py-3 whitespace-normal min-w-[250px] break-words font-semibold leading-snug text-left text-xs">${row.title}</td>
                     <td class="px-3 py-3">
                         <select id="edit-staff-${tabId}-${row.id}" class="w-full text-[11px] px-1 py-1.5 border border-blue-300 rounded focus:border-indigo-500 font-bold text-indigo-700 shadow-sm transition-all bg-white">
-                            <option value="${row.staff}" hidden>${displayStaff}</option>
-                            ${dynamicStaffOptions.map(opt => `<option value="${opt}" ${row.staff === opt ? 'selected' : ''}>${opt}</option>`).join('')}
+                            ${!dynamicStaffOptions.includes((row.staff || '').toUpperCase().trim()) ? `<option value="${row.staff}" style="display:none;" selected>${displayStaff}</option>` : ''}
+                            ${dynamicStaffOptions.map(opt => `<option value="${opt}" ${(row.staff || '').toUpperCase().trim() === opt ? 'selected' : ''}>${opt}</option>`).join('')}
                         </select>
                     </td>
                     <td class="px-3 py-3 text-center font-medium text-[11px]">${formatDisplayDate(row.date)}</td>
@@ -1980,7 +1953,7 @@
                 <td class="px-3 py-3 text-center font-medium whitespace-normal break-words w-[130px] max-w-[130px] leading-relaxed text-[11px]">${row.callNo082}</td>
                 <td class="px-3 py-3 text-center align-middle">${displayCallNo050}</td>
                 <td class="px-3 py-3 font-extrabold text-indigo-600 dark:text-indigo-400 text-[11px]">${row.accession}</td>
-                <td class="px-3 py-3 whitespace-normal break-words font-semibold leading-relaxed text-left text-xs min-w-[250px]">${row.title}</td>
+                <td class="px-3 py-3 whitespace-normal break-words font-semibold leading-snug text-left text-xs">${row.title}</td>
                 <td class="px-3 py-3 font-bold text-gray-800 dark:text-gray-200 text-[11px]">${displayStaff}</td>
                 <td class="px-3 py-3 text-center font-medium text-[11px]">${formatDisplayDate(row.date)}</td>
                 <td class="px-3 py-3">${statusBadge}</td>
