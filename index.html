@@ -758,6 +758,16 @@
                     <input type="tel" id="staff-phone" placeholder="Office Number" class="w-full text-xs border border-gray-200 dark:border-gray-600 rounded-lg pl-9 pr-3 py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors shadow-sm">
                 </div>
                 
+                <div class="relative" id="staff-status-container">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <select id="staff-status" class="w-full text-xs border border-gray-200 dark:border-gray-600 rounded-lg pl-9 pr-3 py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors shadow-sm appearance-none cursor-pointer">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+
                 <div>
                     <input type="file" id="staff-image" accept="image/*" class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer">
                 </div>
@@ -827,14 +837,33 @@
            STAFF MANAGEMENT DATABASE
            ===================================================================== */
         let defaultStaffDB = [
-            { id: 1, name: "FATIHAH", position: "Data Entry Officer", grade: "S19", email: "fatihah@library.iku.gov.my", phone: "012-3456789", image: "" },
-            { id: 2, name: "FAZILAH", position: "Senior Librarian", grade: "S29", email: "fazilah@library.iku.gov.my", phone: "013-4567890", image: "" },
-            { id: 3, name: "SAKINAH", position: "Cataloging Assistant", grade: "S19", email: "sakinah@library.iku.gov.my", phone: "014-5678901", image: "" },
-            { id: 4, name: "HUSNA", position: "Library Executive", grade: "S41", email: "husna@library.iku.gov.my", phone: "019-8765432", image: "" }
+            { id: 1, name: "FATIHAH", position: "Data Entry Officer", grade: "S19", email: "fatihah@library.iku.gov.my", phone: "012-3456789", image: "", status: "Active" },
+            { id: 2, name: "FAZILAH", position: "Senior Librarian", grade: "S29", email: "fazilah@library.iku.gov.my", phone: "013-4567890", image: "", status: "Active" },
+            { id: 3, name: "SAKINAH", position: "Cataloging Assistant", grade: "S19", email: "sakinah@library.iku.gov.my", phone: "014-5678901", image: "", status: "Active" },
+            { id: 4, name: "HUSNA", position: "Library Executive", grade: "S41", email: "husna@library.iku.gov.my", phone: "019-8765432", image: "", status: "Active" }
         ];
 
         let staffDB = JSON.parse(JSON.stringify(defaultStaffDB)); 
         let editingStaffId = null;
+
+        const getStaffOptions = () => {
+            if (currentUserRole === 'admin') return staffDB.map(s => s.name.toUpperCase());
+            return staffDB.filter(s => s.status !== 'Inactive').map(s => s.name.toUpperCase());
+        };
+
+        const populateStaffDropdowns = () => {
+            const options = getStaffOptions();
+            const selects = ['dash-filter-staff', 'staff-collection', 'staff-approvals'];
+            selects.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    const currentVal = el.value;
+                    el.innerHTML = `<option value="">Staff: All</option><option value="-">-</option>` + 
+                        options.map(opt => `<option value="${opt}">${opt}</option>`).join('');
+                    if(currentVal && (options.includes(currentVal) || currentVal === '-')) el.value = currentVal;
+                }
+            });
+        };
 
         function renderStaffDirectory() {
             const grid = document.getElementById('staff-grid');
@@ -854,8 +883,15 @@
                     </div>
                 ` : '';
 
+                const isInactive = s.status === 'Inactive';
+                const statusBadge = isInactive 
+                    ? `<div class="absolute top-3 left-3 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-sm border border-red-200 dark:border-red-700">Inactive</div>`
+                    : `<div class="absolute top-3 left-3 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-sm border border-emerald-200 dark:border-emerald-700">Active</div>`;
+                const opacityClass = isInactive ? 'opacity-70 grayscale-[0.2]' : '';
+
                 grid.innerHTML += `
-                    <div class="glass-panel p-5 rounded-2xl shadow-soft hover-lift relative flex flex-col h-full">
+                    <div class="glass-panel p-5 rounded-2xl shadow-soft hover-lift relative flex flex-col h-full ${opacityClass}">
+                        ${statusBadge}
                         <div class="absolute top-3 right-3 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-[10px] font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm border border-indigo-200 dark:border-indigo-700">
                             <svg class="w-3 h-3 text-indigo-500 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
                             ${s.grade}
@@ -890,6 +926,12 @@
             document.getElementById('staff-modal').classList.remove('hidden');
             document.getElementById('staff-modal').classList.add('flex');
             document.getElementById('staff-modal-title').textContent = editingStaffId ? "Edit Staff" : "Add New Staff";
+            
+            if (currentUserRole === 'admin') {
+                document.getElementById('staff-status-container').classList.remove('hidden');
+            } else {
+                document.getElementById('staff-status-container').classList.add('hidden');
+            }
         }
         
         function closeStaffModal() {
@@ -901,6 +943,7 @@
             document.getElementById('staff-email').value = '';
             document.getElementById('staff-phone').value = '';
             document.getElementById('staff-image').value = '';
+            document.getElementById('staff-status').value = 'Active';
             editingStaffId = null;
         }
 
@@ -913,6 +956,7 @@
                 document.getElementById('staff-grade').value = s.grade;
                 document.getElementById('staff-email').value = s.email || '';
                 document.getElementById('staff-phone').value = s.phone || '';
+                document.getElementById('staff-status').value = s.status || 'Active';
                 openStaffModal();
             }
         }
@@ -921,6 +965,7 @@
             if(confirm("Delete this staff?")) {
                 staffDB = staffDB.filter(x => x.id !== id);
                 renderStaffDirectory();
+                populateStaffDropdowns();
                 
                 showLoading("Menyelaras maklumat...");
                 server.saveStaff(staffDB);
@@ -933,6 +978,7 @@
             const grd = document.getElementById('staff-grade').value;
             const email = document.getElementById('staff-email').value;
             const phone = document.getElementById('staff-phone').value;
+            const status = document.getElementById('staff-status').value || 'Active';
             const fileInput = document.getElementById('staff-image');
             
             if(!name || !pos) return alert("Sila masukkan sekurang-kurangnya Nama & Jawatan (Position).");
@@ -940,14 +986,15 @@
             const updateDB = (imgData) => {
                 if(editingStaffId) {
                     let s = staffDB.find(x => x.id === editingStaffId);
-                    s.name = name; s.position = pos; s.grade = grd; s.email = email; s.phone = phone;
+                    s.name = name; s.position = pos; s.grade = grd; s.email = email; s.phone = phone; s.status = status;
                     if(imgData !== null) s.image = imgData;
                 } else {
-                    staffDB.push({ id: Date.now(), name: name, position: pos, grade: grd, email: email, phone: phone, image: imgData || "" });
+                    staffDB.push({ id: Date.now(), name: name, position: pos, grade: grd, email: email, phone: phone, image: imgData || "", status: status });
                 }
                 
                 closeStaffModal();
                 renderStaffDirectory();
+                populateStaffDropdowns();
                 
                 showLoading("Menyimpan ke pangkalan data...");
                 server.saveStaff(staffDB);
@@ -1192,14 +1239,13 @@
         const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyW6tt0RSPlUk6FYADcQizfe3ami9wLtKNKDcjJd8f1Wev9E3D918Vr7y7vBnI4ONis/exec";
         
         const statusOptions = ["Completed", "incomplete", "Pending For Approval"];
-        const staffOptions = ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA"];
         
         let staffChartInstance = null;
         let statusChartInstance = null;
         
         const getStaffDisplay = (staffName) => {
             if (!staffName || staffName.trim() === '') return '-';
-            return staffOptions.includes(staffName) ? staffName : 'ADMIN';
+            return staffName.toUpperCase();
         };
 
         const getYearFromDate = (dateStr) => {
@@ -1342,6 +1388,7 @@
                             const data = JSON.parse(text);
                             if(data && Array.isArray(data)) {
                                 staffDB = data.length > 0 ? data : JSON.parse(JSON.stringify(defaultStaffDB));
+                                populateStaffDropdowns();
                                 if (currentActiveTab === 'staff') renderStaffDirectory();
                             }
                         } catch(e) { console.error("JSON Error (Staff): ", e); }
@@ -1442,6 +1489,7 @@
 
                 document.getElementById('sidebar').classList.add('sidebar-desktop-closed');
 
+                populateStaffDropdowns();
                 switchTab('dashboard', document.querySelector('.nav-link'));
 
                 startSessionManagement();
@@ -1844,25 +1892,25 @@
                     `;
                 }
 
+                let dynamicStaffOptions = getStaffOptions();
+                if (row.staff && row.staff !== '-' && !dynamicStaffOptions.includes(row.staff.toUpperCase())) {
+                    dynamicStaffOptions.push(row.staff.toUpperCase());
+                }
+
                 return `
                     <td class="px-3 py-3 text-center text-gray-500 font-bold text-[11px]">${row.no}</td>
                     <td class="px-3 py-3"><input type="text" id="edit-ctrl-${tabId}-${row.id}" value="${row.controlNo}" class="w-full text-[11px] px-2 py-1.5 border border-blue-300 rounded focus:border-indigo-500 text-center transition-all bg-white text-gray-900 shadow-sm"></td>
                     ${call082HTML}
                     <td class="px-3 py-3"><input type="text" id="edit-c050-${tabId}-${row.id}" value="${row.callNo050}" class="w-full text-[11px] px-2 py-1.5 border border-blue-300 rounded focus:border-indigo-500 text-center transition-all bg-white text-gray-900 shadow-sm"></td>
                     <td class="px-3 py-3 font-extrabold text-indigo-700 text-[11px]">${row.accession}</td>
-                    <td class="px-3 py-3 whitespace-normal min-w-[250px] break-words font-semibold leading-snug text-left text-gray-900 text-xs">${row.title}</td>
+                    <td class="px-3 py-3 whitespace-normal min-w-[250px] break-words font-semibold leading-snug text-left text-xs">${row.title}</td>
                     <td class="px-3 py-3">
                         <select id="edit-staff-${tabId}-${row.id}" class="w-full text-[11px] px-1 py-1.5 border border-blue-300 rounded focus:border-indigo-500 font-bold text-indigo-700 shadow-sm transition-all bg-white">
                             <option value="${row.staff}" hidden>${displayStaff}</option>
-                            ${staffOptions.map(opt => `<option value="${opt}" ${row.staff === opt ? 'selected' : ''}>${opt}</option>`).join('')}
+                            ${dynamicStaffOptions.map(opt => `<option value="${opt}" ${row.staff === opt ? 'selected' : ''}>${opt}</option>`).join('')}
                         </select>
                     </td>
-                    <td class="px-3 py-3 text-center font-medium text-gray-600 text-[11px]">${formatDisplayDate(row.date)}</td>
-                    <td class="px-3 py-3">${statusSelectHTML}</td>
-                    <td class="px-3 py-3 rounded text-[11px] text-gray-400 text-left italic font-medium">Audit Trail locked.</td>
-                    <td class="px-3 py-3 text-center align-middle">
-                        <div class="flex gap-1.5 justify-center">
-                            <button type="button" onclick="saveRow(${row.id}, '${tabId}')" class="bg-emerald-500 hover:bg-emerald-600 text-white p-1.5 rounded-lg shadow-glow-emerald hover:-translate-y-0.5 transition-all" title="Save Record"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></button>
+                    <td class="px-3 py-3 text-center font-medium text-[11px]">${formatDisplayDate(row.date)}</td>
                             <button type="button" onclick="cancelEdit('${tabId}')" class="bg-gray-400 hover:bg-gray-500 text-white p-1.5 rounded-lg shadow-sm hover:-translate-y-0.5 transition-all" title="Cancel"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
                         </div>
                     </td>
