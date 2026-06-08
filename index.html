@@ -64,7 +64,7 @@
         tbody td { 
             background-color: var(--row-bg, #ffffff); 
             border-top: 1px solid transparent; border-bottom: 1px solid transparent;
-            font-size: 0.65rem; transition: all 0.2s ease;
+            transition: all 0.2s ease;
         }
         tbody td:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-left: 1px solid transparent; }
         tbody td:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-right: 1px solid transparent; }
@@ -293,10 +293,7 @@
                                 <select id="dash-filter-staff" onchange="applyDashboardFilter()" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                     <option value="">Staff: All</option>
                                     <option value="-">-</option>
-                                    <option value="FATIHAH">FATIHAH</option>
-                                    <option value="FAZILAH">FAZILAH</option>
-                                    <option value="SAKINAH">SAKINAH</option>
-                                    <option value="HUSNA">HUSNA</option>
+                                    <!-- Populated by JS -->
                                 </select>
                             </div>
                             
@@ -483,10 +480,7 @@
                                     <select id="staff-collection" onchange="applyFilters('collection')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Staff: All</option>
                                         <option value="-">-</option>
-                                        <option value="FATIHAH">FATIHAH</option>
-                                        <option value="FAZILAH">FAZILAH</option>
-                                        <option value="SAKINAH">SAKINAH</option>
-                                        <option value="HUSNA">HUSNA</option>
+                                        <!-- Populated by JS -->
                                     </select>
                                 </div>
                                 
@@ -574,7 +568,7 @@
                         <div class="p-3 flex flex-wrap items-center gap-2 border-b border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-800/50">
                             <div class="flex-1 min-w-[200px] relative">
                                 <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                <input type="text" id="search-approvals" onkeyup="debouncedSearch('approvals')" placeholder="Search Title or Accession..." class="w-full text-xs border border-gray-200 dark:border-gray-600 rounded-lg pl-8 pr-3 py-1.5 h-[36px] bg-gray-50/50 dark:bg-gray-900/50 focus:bg-white dark:focus:bg-gray-800 transition-all font-medium">
+                                <input type="text" id="search-approvals" onkeyup="debouncedSearch('approvals')" placeholder="Search Title or Accession..." class="w-full text-xs border border-gray-200 dark:border-gray-600 rounded-lg pl-8 pr-3 py-1.5 h-[36px] bg-white dark:bg-gray-900/50 focus:bg-white dark:focus:bg-gray-800 transition-all font-medium">
                             </div>
                             
                             <div class="flex flex-wrap items-center gap-2">
@@ -582,10 +576,7 @@
                                     <select id="staff-approvals" onchange="applyFilters('approvals')" class="w-full text-[11px] border border-gray-200 dark:border-gray-600 rounded-lg px-2 h-[36px] bg-white dark:bg-gray-800 cursor-pointer appearance-none text-gray-700 dark:text-gray-200 font-semibold shadow-sm transition-all hover:border-indigo-300" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%239ca3af%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1em;">
                                         <option value="">Staff: All</option>
                                         <option value="-">-</option>
-                                        <option value="FATIHAH">FATIHAH</option>
-                                        <option value="FAZILAH">FAZILAH</option>
-                                        <option value="SAKINAH">SAKINAH</option>
-                                        <option value="HUSNA">HUSNA</option>
+                                        <!-- Populated by JS -->
                                     </select>
                                 </div>
                                 
@@ -836,6 +827,8 @@
         /* =====================================================================
            STAFF MANAGEMENT DATABASE
            ===================================================================== */
+        const staffOptions = ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA"];
+
         let defaultStaffDB = [
             { id: 1, name: "FATIHAH", position: "Data Entry Officer", grade: "S19", email: "fatihah@library.iku.gov.my", phone: "012-3456789", image: "", status: "Active" },
             { id: 2, name: "FAZILAH", position: "Senior Librarian", grade: "S29", email: "fazilah@library.iku.gov.my", phone: "013-4567890", image: "", status: "Active" },
@@ -847,8 +840,27 @@
         let editingStaffId = null;
 
         const getStaffOptions = () => {
-            if (currentUserRole === 'admin') return staffDB.map(s => s.name.toUpperCase());
-            return staffDB.filter(s => s.status !== 'Inactive').map(s => s.name.toUpperCase());
+            let options = [...staffOptions];
+            
+            staffDB.forEach(s => {
+                if (s.name && s.name.trim() !== '') {
+                    if (currentUserRole !== 'admin' && s.status === 'Inactive') return;
+                    
+                    let shortName = s.name.trim().split(' ')[0].toUpperCase();
+                    if (!options.includes(shortName) && !["EYZAN", "ALIA", "NABIL", "ADMIN"].includes(shortName)) {
+                        options.push(shortName);
+                    }
+                }
+            });
+
+            if (currentUserRole === 'admin') {
+                const adminExtras = ["EYZAN", "ALIA", "NABIL", "ADMIN"];
+                adminExtras.forEach(ext => {
+                    if (!options.includes(ext)) options.push(ext);
+                });
+            }
+            
+            return options;
         };
 
         const populateStaffDropdowns = () => {
@@ -1911,6 +1923,11 @@
                         </select>
                     </td>
                     <td class="px-3 py-3 text-center font-medium text-[11px]">${formatDisplayDate(row.date)}</td>
+                    <td class="px-3 py-3">${statusSelectHTML}</td>
+                    <td class="px-3 py-3 rounded text-[11px] text-gray-400 text-left italic font-medium">Audit Trail locked.</td>
+                    <td class="px-3 py-3 text-center align-middle">
+                        <div class="flex gap-1.5 justify-center">
+                            <button type="button" onclick="saveRow(${row.id}, '${tabId}')" class="bg-emerald-500 hover:bg-emerald-600 text-white p-1.5 rounded-lg shadow-glow-emerald hover:-translate-y-0.5 transition-all" title="Save Record"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></button>
                             <button type="button" onclick="cancelEdit('${tabId}')" class="bg-gray-400 hover:bg-gray-500 text-white p-1.5 rounded-lg shadow-sm hover:-translate-y-0.5 transition-all" title="Cancel"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
                         </div>
                     </td>
