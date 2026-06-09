@@ -778,9 +778,9 @@
                 <svg class="w-8 h-8 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </div>
             <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-2 font-montserrat">Session Timeout</h3>
-            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-6">Your session will expire in 1 minute due to inactivity. Move your mouse or click to stay logged in.</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-6">Sesi anda akan tamat dalam 1 minit. Klik Continue untuk teruskan.</p>
             <button onclick="activityHandler()" class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-xs font-bold py-2.5 px-6 rounded-xl shadow-glow-orange transition-all hover:-translate-y-0.5 w-full">
-                Continue Session
+                Continue
             </button>
         </div>
     </div>
@@ -812,7 +812,11 @@
            ===================================================================== */
         let masterData = []; // Full Data from API
         let dashboardData = []; // Data untuk chart sahaja
+        let recordData = []; // Data untuk table Koleksi
+        let approvalData = []; // Data untuk table Approval
         
+        let collectionPage = 1;
+        let approvalsPage = 1;
         const rowsPerPage = 100;
         
         let currentUserRole = ""; 
@@ -1267,7 +1271,7 @@
         function startSessionManagement() {
             updateActivity();
             
-            ['mousemove', 'mousedown', 'keypress', 'scroll', 'touchstart'].forEach(evt => {
+            ['mousemove', 'mousedown', 'click', 'keypress', 'scroll', 'touchstart'].forEach(evt => {
                 document.addEventListener(evt, activityHandler, { passive: true });
             });
 
@@ -1276,14 +1280,14 @@
             
             if(autoSyncInterval) clearInterval(autoSyncInterval);
             autoSyncInterval = setInterval(() => {
-                if (currentUserRole !== "" && editingId === null) {
+                if (currentUserRole !== "" && editingId === null && processingRows.size === 0) {
                     fetchDataFromGoogleSheet(true); 
                 }
             }, 15000);
         }
 
         function stopSessionManagement() {
-            ['mousemove', 'mousedown', 'keypress', 'scroll', 'touchstart'].forEach(evt => {
+            ['mousemove', 'mousedown', 'click', 'keypress', 'scroll', 'touchstart'].forEach(evt => {
                 document.removeEventListener(evt, activityHandler);
             });
             if(sessionCheckerInterval) clearInterval(sessionCheckerInterval);
@@ -1464,6 +1468,7 @@
 
                 errorMsg.classList.add('hidden');
                 
+                localStorage.setItem('iku_loggedIn', 'true');
                 localStorage.setItem('iku_role', currentUserRole);
                 localStorage.setItem('iku_name', currentUserName);
 
@@ -1492,11 +1497,12 @@
         }
 
         function checkAutoLogin() {
+            const isLoggedIn = localStorage.getItem('iku_loggedIn');
             const savedRole = localStorage.getItem('iku_role');
             const savedName = localStorage.getItem('iku_name');
             const lastActivityStr = localStorage.getItem('iku_last_activity');
 
-            if (savedRole && savedName && lastActivityStr) {
+            if (isLoggedIn === 'true' && savedRole && savedName && lastActivityStr) {
                 const idleTime = Date.now() - parseInt(lastActivityStr, 10);
                 if (idleTime < TIMEOUT_DURATION) {
                     currentUserRole = savedRole;
@@ -1539,6 +1545,7 @@
             document.getElementById('login-role').value = '';
             document.getElementById('password-container').classList.add('hidden');
             
+            localStorage.removeItem('iku_loggedIn');
             localStorage.removeItem('iku_role');
             localStorage.removeItem('iku_name');
             localStorage.removeItem('iku_last_activity');
@@ -1569,7 +1576,9 @@
             
             masterData = [];
             dashboardData = [];
-            
+            recordData = [];
+            approvalData = [];
+
             if(document.getElementById('table-body-collection')) document.getElementById('table-body-collection').innerHTML = '';
             if(document.getElementById('table-body-approvals')) document.getElementById('table-body-approvals').innerHTML = '';
         }
