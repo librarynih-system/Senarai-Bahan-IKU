@@ -798,27 +798,11 @@
         let editingStaffId = null;
 
         const getStaffOptions = () => {
-            let options = [...staffOptions];
-            
-            staffDB.forEach(s => {
-                if (s.name && s.name.trim() !== '') {
-                    if (currentUserRole !== 'admin' && s.status === 'Inactive') return;
-                    
-                    let shortName = s.name.trim().split(' ')[0].toUpperCase();
-                    if (!options.includes(shortName) && !["EYZAN", "ALIA", "NABIL", "ADMIN"].includes(shortName)) {
-                        options.push(shortName);
-                    }
-                }
-            });
-
             if (currentUserRole === 'admin') {
-                const adminExtras = ["EYZAN", "ALIA", "NABIL", "ADMIN"];
-                adminExtras.forEach(ext => {
-                    if (!options.includes(ext)) options.push(ext);
-                });
+                return ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA", "ADMIN", "NABIL", "EYZAN", "ALIA"];
+            } else {
+                return ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA"];
             }
-            
-            return options;
         };
 
         const populateStaffDropdowns = () => {
