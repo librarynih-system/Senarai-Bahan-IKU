@@ -798,11 +798,27 @@
         let editingStaffId = null;
 
         const getStaffOptions = () => {
+            let options = [...staffOptions];
+            
+            staffDB.forEach(s => {
+                if (s.name && s.name.trim() !== '') {
+                    if (currentUserRole !== 'admin' && s.status === 'Inactive') return;
+                    
+                    let shortName = s.name.trim().split(' ')[0].toUpperCase();
+                    if (!options.includes(shortName) && !["EYZAN", "ALIA", "NABIL", "ADMIN"].includes(shortName)) {
+                        options.push(shortName);
+                    }
+                }
+            });
+
             if (currentUserRole === 'admin') {
-                return ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA", "ADMIN", "NABIL", "EYZAN", "ALIA"];
-            } else {
-                return ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA"];
+                const adminExtras = ["EYZAN", "ALIA", "NABIL", "ADMIN"];
+                adminExtras.forEach(ext => {
+                    if (!options.includes(ext)) options.push(ext);
+                });
             }
+            
+            return options;
         };
 
         const populateStaffDropdowns = () => {
@@ -1065,7 +1081,7 @@
         /* =====================================================================
            KONFIGURASI API (UNTUK HOSTING DI GITHUB/EXTERNAL)
            ===================================================================== */
-        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxXmpxtWCBzO5uc1AmUxEMxS05DnwThZJMh8hSHFtGSpEbYk8BFohzhejezw4S2_B1/exec";
+        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwTl0pRR8hyDEpDG7gQWBLkzRtMoi4R7QmAG5w4wIcpHmsIWaaDzTKUm8bdk8tfQL-G/exec";
         
         const statusOptions = ["Completed", "incomplete", "Pending For Approval"];
         
