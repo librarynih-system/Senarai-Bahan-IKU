@@ -762,6 +762,12 @@
         let editingStaffId = null;
 
         const getStaffOptions = () => {
+            // Sekatan khas untuk Staff dan Rosli (hanya senarai ini dibenarkan)
+            if (currentUserRole === 'staff' || currentUserRole === 'rosli') {
+                return ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA", "ADMIN"];
+            }
+
+            // Logik di bawah akan terus berjalan hanya untuk akaun Admin
             let options = [...staffOptions];
             
             staffDB.forEach(s => {
