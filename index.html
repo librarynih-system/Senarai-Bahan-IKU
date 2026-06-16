@@ -218,11 +218,6 @@
                         <span class="nav-text whitespace-nowrap font-medium text-[11px]">Staff</span>
                         <div class="sidebar-tooltip">Staff Management</div>
                     </a>
-                    <a href="#" onclick="switchTab('reports', this)" class="nav-link flex items-center gap-3 px-3 py-2.5 text-indigo-100 hover:text-white group">
-                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002-2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                        <span class="nav-text whitespace-nowrap font-medium text-[11px]">Analytics Catalog</span>
-                        <div class="sidebar-tooltip">Analytics Catalog</div>
-                    </a>
                 </nav>
 
                 <div class="p-3 mt-auto">
@@ -268,7 +263,7 @@
                     </div>
 
                     <div class="flex items-center gap-4 self-end md:self-auto">
-                        <button onclick="document.documentElement.classList.toggle('dark'); setTimeout(()=> { if(currentActiveTab === 'dashboard') updateDashboardStats(); if(currentActiveTab === 'reports') updateAnalyticsCatalog(); }, 50);" class="p-2 bg-white dark:bg-gray-800 rounded-full shadow-soft border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-yellow-400 hover:bg-gray-50 transition-all hover-lift" title="Toggle Dark Mode">
+                        <button onclick="document.documentElement.classList.toggle('dark'); setTimeout(()=> { if(currentActiveTab === 'dashboard') updateDashboardStats(); }, 50);" class="p-2 bg-white dark:bg-gray-800 rounded-full shadow-soft border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-yellow-400 hover:bg-gray-50 transition-all hover-lift" title="Toggle Dark Mode">
                             <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                             <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         </button>
@@ -667,43 +662,6 @@
                     </div>
                 </div>
 
-                <!-- TAB: ANALYTICS CATALOG -->
-                <div id="view-reports" class="tab-pane flex-col flex-1 overflow-y-auto">
-                    <h2 class="text-lg font-bold text-gray-900 dark:text-white font-montserrat mb-6">Analytics Catalog</h2>
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                        
-                        <!-- NEW: Approved Records Percentage -->
-                        <div class="glass-panel p-5 rounded-2xl shadow-soft h-[300px] flex flex-col hover-lift">
-                            <h3 class="font-bold text-gray-800 dark:text-white text-xs mb-4">Approved Records Percentage</h3>
-                            <div id="approved-percentage-container" class="relative w-full flex-1 flex flex-col items-center justify-center pb-2">
-                                <div class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-2 font-montserrat">0%</div>
-                                <div class="text-sm font-bold text-gray-700 dark:text-gray-300">Approved Records</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400 mt-4 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg w-full text-center">
-                                    <span class="block mb-1">Approved: <b>0</b></span>
-                                    <span class="block">Total Records: <b>0</b></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Popular Fields -->
-                        <div class="glass-panel p-5 rounded-2xl shadow-soft h-[300px] flex flex-col hover-lift">
-                            <h3 class="font-bold text-gray-800 dark:text-white text-xs mb-4">Most Popular Subjects</h3>
-                            <div class="relative w-full flex-1 min-h-[150px] flex items-center justify-center pb-2"><canvas id="chart-fields"></canvas></div>
-                        </div>
-                        
-                        <!-- Staff Search Trends (Now a Bar Chart) -->
-                        <div class="glass-panel p-5 rounded-2xl shadow-soft h-[300px] flex flex-col hover-lift">
-                            <h3 class="font-bold text-gray-800 dark:text-white text-xs mb-4">Staff Search Frequency</h3>
-                            <div class="relative w-full flex-1 min-h-[150px] flex items-center justify-center pb-2"><canvas id="chart-trends"></canvas></div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-panel p-5 rounded-2xl shadow-soft">
-                        <h3 class="font-bold text-gray-800 dark:text-white text-xs mb-4">Catalog Summary</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400" id="analytics-summary-text">System is preparing analytics catalog...</p>
-                    </div>
-                </div>
-
             </div>
         </main>
     </div>
@@ -805,7 +763,6 @@
 
     <!-- ================== JAVASCRIPT LOGIC ================== -->
     <script>
-        let analyticsChartsInitialized = false;
         
         /* =====================================================================
            ISOLATED DATA STATES
@@ -828,6 +785,8 @@
         /* =====================================================================
            STAFF MANAGEMENT DATABASE
            ===================================================================== */
+        const staffOptions = ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA"];
+
         let defaultStaffDB = [
             { id: 1, name: "FATIHAH", position: "Data Entry Officer", grade: "S19", email: "fatihah@library.iku.gov.my", phone: "012-3456789", image: "", status: "Active" },
             { id: 2, name: "FAZILAH", position: "Senior Librarian", grade: "S29", email: "fazilah@library.iku.gov.my", phone: "013-4567890", image: "", status: "Active" },
@@ -839,11 +798,27 @@
         let editingStaffId = null;
 
         const getStaffOptions = () => {
+            let options = [...staffOptions];
+            
+            staffDB.forEach(s => {
+                if (s.name && s.name.trim() !== '') {
+                    if (currentUserRole !== 'admin' && s.status === 'Inactive') return;
+                    
+                    let shortName = s.name.trim().split(' ')[0].toUpperCase();
+                    if (!options.includes(shortName) && !["EYZAN", "ALIA", "NABIL", "ADMIN"].includes(shortName)) {
+                        options.push(shortName);
+                    }
+                }
+            });
+
             if (currentUserRole === 'admin') {
-                return ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA", "ADMIN", "NABIL", "EYZAN", "ALIA"];
-            } else {
-                return ["FATIHAH", "FAZILAH", "SAKINAH", "HUSNA", "ADMIN"];
+                const adminExtras = ["EYZAN", "ALIA", "NABIL", "ADMIN"];
+                adminExtras.forEach(ext => {
+                    if (!options.includes(ext)) options.push(ext);
+                });
             }
+            
+            return options;
         };
 
         const populateStaffDropdowns = () => {
@@ -1034,21 +1009,6 @@
         }
 
         /* =====================================================================
-           FUNGSI LOG SEARCH UNTUK ANALYTICS
-           ===================================================================== */
-        function logSearchActivity(staffName, keyword) {
-            if (!staffName || staffName === "") return;
-            let logs = JSON.parse(localStorage.getItem('iku_search_logs') || '[]');
-            if (logs.length > 1000) logs = logs.slice(logs.length - 1000); 
-            logs.push({ staff: staffName, keyword: keyword, time: Date.now() });
-            localStorage.setItem('iku_search_logs', JSON.stringify(logs));
-            
-            if (currentActiveTab === 'reports') {
-                updateAnalyticsCatalog();
-            }
-        }
-
-        /* =====================================================================
            FUNGSI TOGGLE SIDEBAR
            ===================================================================== */
         function toggleSidebar() {
@@ -1116,116 +1076,6 @@
                 pageSubtitle.textContent = "Manage team profiles and credentials.";
                 renderStaffDirectory();
             } 
-            else if (tabId === 'reports') {
-                pageTitle.innerHTML = "Analytics Catalog";
-                pageSubtitle.textContent = "Search trends and topic analysis.";
-                updateAnalyticsCatalog();
-            }
-        }
-
-        /* =====================================================================
-           ANALYTICS CATALOG DYNAMIC GENERATION
-           ===================================================================== */
-        let chartFieldsInstance = null;
-        let chartTrendsInstance = null;
-
-        function updateAnalyticsCatalog() {
-            if (!masterData || masterData.length === 0) return;
-
-            const textColor = isDarkMode() ? '#94a3b8' : '#64748b';
-
-            // 1. Approved Records Percentage
-            const totalRecords = masterData.length;
-            const approvedRecords = masterData.filter(r => (r.status || "").toLowerCase().trim() === 'completed').length;
-            const approvedPercentage = totalRecords > 0 ? Math.round((approvedRecords / totalRecords) * 100) : 0;
-            
-            const approvedContainer = document.getElementById('approved-percentage-container');
-            if(approvedContainer) {
-                approvedContainer.innerHTML = `
-                    <div class="text-5xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-2 font-montserrat">${approvedPercentage}%</div>
-                    <div class="text-sm font-bold text-gray-700 dark:text-gray-300">Approved Records</div>
-                    <div class="text-xs text-gray-500 dark:text-gray-400 mt-4 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg w-full text-center">
-                        <span class="block mb-1">Approved: <b>${approvedRecords.toLocaleString()}</b></span>
-                        <span class="block">Total Records: <b>${totalRecords.toLocaleString()}</b></span>
-                    </div>
-                `;
-            }
-
-            // 2. Most Popular Subjects (from Title)
-            let subjectCounts = { 'Library Science': 0, 'Information Technology': 0, 'Education': 0, 'History': 0, 'Others': 0 };
-            
-            masterData.forEach(row => {
-                let t = (row.title || "").toLowerCase();
-                if (t.includes('library') || t.includes('catalog') || t.includes('archive') || t.includes('bibliograph')) {
-                    subjectCounts['Library Science']++;
-                } else if (t.includes('computer') || t.includes('software') || t.includes('data') || t.includes('tech') || t.includes('web') || t.includes('internet') || t.includes('system')) {
-                    subjectCounts['Information Technology']++;
-                } else if (t.includes('education') || t.includes('teach') || t.includes('learn') || t.includes('school') || t.includes('student')) {
-                    subjectCounts['Education']++;
-                } else if (t.includes('history') || t.includes('century') || t.includes('past')) {
-                    subjectCounts['History']++;
-                } else {
-                    subjectCounts['Others']++;
-                }
-            });
-
-            let fieldLabels = Object.keys(subjectCounts);
-            let fieldData = Object.values(subjectCounts);
-
-            if (chartFieldsInstance) chartFieldsInstance.destroy();
-            chartFieldsInstance = new Chart(document.getElementById('chart-fields').getContext('2d'), {
-                type: 'doughnut',
-                data: { labels: fieldLabels, datasets: [{ data: fieldData, backgroundColor: ['#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#cbd5e1'], borderWidth: 0 }] },
-                options: { 
-                    responsive: true, maintainAspectRatio: false, cutout: '65%', layout: { padding: { top: 10, bottom: 10, left: 10, right: 10 } },
-                    plugins: { 
-                        legend: { position: 'right', labels:{usePointStyle:true, boxWidth:6, font:{size:9}, color:textColor} },
-                        tooltip: { callbacks: { label: function(context) { let value = context.raw; let percentage = totalRecords > 0 ? Math.round((value / totalRecords) * 100) : 0; return ` ${context.label}: ${percentage}% (${value})`; } } }
-                    } 
-                }
-            });
-
-            // 3. Staff Search Frequency
-            let searchLogs = JSON.parse(localStorage.getItem('iku_search_logs') || '[]');
-            let staffSearchCounts = {};
-            searchLogs.forEach(log => {
-                staffSearchCounts[log.staff] = (staffSearchCounts[log.staff] || 0) + 1;
-            });
-            
-            if (Object.keys(staffSearchCounts).length === 0) {
-                staffSearchCounts = { [currentUserName || 'STAFF']: 0 };
-            }
-
-            let searchStaffLabels = Object.keys(staffSearchCounts);
-            let searchStaffData = Object.values(staffSearchCounts);
-
-            if (chartTrendsInstance) chartTrendsInstance.destroy();
-            chartTrendsInstance = new Chart(document.getElementById('chart-trends').getContext('2d'), {
-                type: 'bar',
-                data: { labels: searchStaffLabels, datasets: [{ label: 'Searches', data: searchStaffData, backgroundColor: '#10b981', borderRadius: 4, barThickness: 25 }] },
-                options: { 
-                    responsive: true, maintainAspectRatio: false, plugins: { legend: {display: false} }, 
-                    scales: { x:{grid:{display:false}, ticks:{color:textColor, font:{size:9}}}, y:{beginAtZero: true, ticks:{stepSize:1, color:textColor, font:{size:9}}} } 
-                }
-            });
-
-            // Catalog Summary Text Update
-            const summaryEl = document.getElementById('analytics-summary-text');
-            if(summaryEl) {
-                let topSubject = 'Others';
-                let maxSubjCount = -1;
-                for (let s in subjectCounts) {
-                    if (subjectCounts[s] > maxSubjCount) { maxSubjCount = subjectCounts[s]; topSubject = s; }
-                }
-                
-                let topSearcher = '-';
-                let maxSearchCount = -1;
-                for (let s in staffSearchCounts) {
-                    if (staffSearchCounts[s] > maxSearchCount) { maxSearchCount = staffSearchCounts[s]; topSearcher = s; }
-                }
-
-                summaryEl.innerHTML = `Analisis terkini daripada <b>${totalRecords.toLocaleString()}</b> rekod keseluruhan sistem. <b>${approvedPercentage}%</b> daripada rekod telah berjaya diluluskan. Bidang paling banyak dicatatkan ialah <b>${topSubject}</b> (${totalRecords > 0 ? Math.round((maxSubjCount/totalRecords)*100) : 0}%). Staf paling aktif membuat carian ialah <b>${topSearcher}</b> dengan ${maxSearchCount} carian.`;
-            }
         }
 
         /* =====================================================================
@@ -1404,23 +1254,6 @@
                 })
                 .then(() => { setTimeout(() => { hideLoading(); showToast("Maklumat Staff berjaya di-sync!"); }, 800); })
                 .catch(error => { hideLoading(); showToast("Gagal menyimpan data ke server."); });
-            },
-            
-            updateRow: function(record) { 
-                if (GAS_WEB_APP_URL === "LETAK_URL_GOOGLE_APPS_SCRIPT_ANDA_DI_SINI") {
-                    const idx = masterData.findIndex(r => r.id === record.id);
-                    if(idx > -1) masterData[idx] = {...record};
-                    setTimeout(() => { if(this.cb) this.cb(true); }, 300); return;
-                }
-                
-                fetch(GAS_WEB_APP_URL, {
-                    method: 'POST', 
-                    mode: 'no-cors',
-                    body: JSON.stringify({ action: 'updateRow', record: record }), 
-                    headers: { 'Content-Type': 'text/plain' }
-                })
-                .then(() => { setTimeout(() => { if(this.cb) this.cb(true); }, 800); })
-                .catch(error => { hideLoading(); showToast("Failed to save."); });
             }
         };
 
@@ -1597,7 +1430,6 @@
             server.withSuccessHandler(function(data) {
                 if (data) {
                     masterData = data; 
-                    console.log(`[DEBUG] masterData fetched: ${masterData.length} records.`);
                 }
                 
                 if (currentActiveTab === 'dashboard') {
@@ -1606,8 +1438,6 @@
                     applyFilters('collection', true); 
                 } else if (currentActiveTab === 'approvals') {
                     applyFilters('approvals', true); 
-                } else if (currentActiveTab === 'reports') {
-                    updateAnalyticsCatalog();
                 }
                 
                 if (!isSilent) hideLoading();
@@ -1654,10 +1484,8 @@
                 statusVal = document.getElementById(`status-${tabId}`).value;
             }
 
-            // Track Real User Search Frequency for Analytics
             if (searchVal !== "" && searchVal !== tabStates[tabId].lastSearch) {
                 tabStates[tabId].lastSearch = searchVal;
-                logSearchActivity(currentUserName, searchVal);
             } else if (searchVal === "") {
                 tabStates[tabId].lastSearch = "";
             }
@@ -1698,7 +1526,6 @@
                 if (tabStates[tabId].page > maxPages) tabStates[tabId].page = maxPages;
             }
             
-            console.log(`[DEBUG] applyFilters applied for ${tabId}. Master: ${masterData.length}, Filtered: ${tabStates[tabId].filtered.length}`);
             renderTable(tabId);
         }
 
@@ -1828,56 +1655,12 @@
             if (tableContainer) tableContainer.scrollTop = currentTableScroll;
         }
 
-        function verifyActionLoop(id, expectedStatus, attempt, slowWarningTimer, successMessage) {
-            if (attempt > 5) {
-                clearTimeout(slowWarningTimer);
-                processingRows.delete(id);
-                hideLoading();
-                alert("Permintaan dihantar, tetapi pelayan lambat merespon. Sila semak semula jadual sebentar lagi.");
-                fetchDataFromGoogleSheet(true);
-                return;
-            }
-
-            setTimeout(() => {
-                fetch(GAS_WEB_APP_URL + "?action=getInitialData")
-                    .then(res => {
-                        if (!res.ok) throw new Error("HTTP Error");
-                        return res.text();
-                    })
-                    .then(text => {
-                        let latestData;
-                        try { latestData = JSON.parse(text); } catch(e) { throw new Error("JSON Parse Error"); }
-                        
-                        const rec = latestData.find(r => r.id === id);
-                        if (rec && (rec.status || "").toLowerCase().trim() === expectedStatus.toLowerCase()) {
-                            masterData = latestData;
-                            clearTimeout(slowWarningTimer);
-                            processingRows.delete(id);
-                            hideLoading();
-                            showToast(successMessage);
-                            applyDashboardFilter();
-                            applyFilters('collection', true);
-                            applyFilters('approvals', true);
-                        } else {
-                            verifyActionLoop(id, expectedStatus, attempt + 1, slowWarningTimer, successMessage);
-                        }
-                    })
-                    .catch(err => {
-                        verifyActionLoop(id, expectedStatus, attempt + 1, slowWarningTimer, successMessage);
-                    });
-            }, 1000); 
-        }
-
+        // FUNGSI INI HANYA DIJALANKAN SEKALI SAHAJA SELEPAS BERJAYA DISIMPAN
         function approveSingleRow(id, tabId) {
-            if (processingRows.has(id)) {
-                showToast("This record is already being processed.");
-                return;
-            }
-
+            if (processingRows.has(id)) return;
             if(!confirm(`Are you sure you want to approve this record?`)) return;
             
             processingRows.add(id);
-            console.log(`[APPROVE ROW] Memproses kelulusan untuk ID: ${id}`);
             
             const btns = document.querySelectorAll(`button[onclick*="approveSingleRow(${id}"]`);
             btns.forEach(btn => {
@@ -1885,95 +1668,43 @@
                 btn.innerHTML = `<svg class="animate-spin w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
             });
 
-            showLoading("Processing approval...");
+            const index = masterData.findIndex(r => r.id === id);
+            if (index === -1) { processingRows.delete(id); return; }
 
-            let slowWarningTimer = setTimeout(() => {
-                const txt = document.getElementById('loading-text');
-                if(txt) txt.textContent = "Approval is still being processed. Please wait...";
-            }, 3000);
+            let recordToUpdate = {...masterData[index]};
+            const rosliInput = document.getElementById(`rosli-c050-${tabId}-${id}`);
+            if (rosliInput) recordToUpdate.callNo050 = rosliInput.value;
 
-            if (GAS_WEB_APP_URL === "LETAK_URL_GOOGLE_APPS_SCRIPT_ANDA_DI_SINI") {
-                clearTimeout(slowWarningTimer);
+            recordToUpdate.status = 'Completed';
+            recordToUpdate.approvedBy = currentUserName;
+            
+            const t = new Date();
+            const timeStr = t.toLocaleTimeString('en-US', { hour12: false });
+            recordToUpdate.approvedDate = String(t.getDate()).padStart(2, '0') + '/' + String(t.getMonth() + 1).padStart(2, '0') + '/' + t.getFullYear() + ' ' + timeStr;
+
+            masterData[index] = recordToUpdate;
+            
+            applyFilters(tabId, true);
+
+            fetch(GAS_WEB_APP_URL, {
+                method: 'POST', 
+                mode: 'no-cors',
+                body: JSON.stringify({ action: 'updateRow', record: recordToUpdate }), 
+                headers: { 'Content-Type': 'text/plain' }
+            }).then(() => {
                 processingRows.delete(id);
-                hideLoading();
-                return;
-            }
-
-            fetch(GAS_WEB_APP_URL + "?action=getInitialData")
-                .then(res => {
-                    if(!res.ok) throw new Error("HTTP Error");
-                    return res.text();
-                })
-                .then(text => {
-                    let latestData = JSON.parse(text);
-                    const rec = latestData.find(r => r.id === id);
-                    if (!rec) throw new Error("Rekod tidak dijumpai.");
-                    
-                    const statusLower = (rec.status || "").toLowerCase().trim();
-                    if (statusLower === 'completed' || statusLower === 'approved') {
-                        clearTimeout(slowWarningTimer);
-                        processingRows.delete(id);
-                        hideLoading();
-                        alert("Record already approved by another user.");
-                        masterData = latestData;
-                        applyDashboardFilter();
-                        applyFilters('collection', true);
-                        applyFilters('approvals', true);
-                        return;
-                    }
-
-                    const loadTxt = document.getElementById('loading-text');
-                    if(loadTxt) loadTxt.textContent = "Updating record...";
-                    
-                    let recordToUpdate = {...rec};
-                    const rosliInput = document.getElementById(`rosli-c050-${tabId}-${id}`);
-                    if (rosliInput) recordToUpdate.callNo050 = rosliInput.value;
-
-                    recordToUpdate.status = 'Completed';
-                    recordToUpdate.approvedBy = currentUserName;
-                    
-                    const t = new Date();
-                    const timeStr = t.toLocaleTimeString('en-US', { hour12: false });
-                    recordToUpdate.approvedDate = String(t.getDate()).padStart(2, '0') + '/' + String(t.getMonth() + 1).padStart(2, '0') + '/' + t.getFullYear() + ' ' + timeStr;
-
-                    const localIndex = masterData.findIndex(r => r.id === id);
-                    if(localIndex !== -1) masterData[localIndex] = recordToUpdate;
-                    
-                    applyDashboardFilter();
-                    applyFilters('collection', true);
-                    applyFilters('approvals', true);
-
-                    return fetch(GAS_WEB_APP_URL, {
-                        method: 'POST', 
-                        mode: 'no-cors',
-                        body: JSON.stringify({ action: 'updateRow', record: recordToUpdate }), 
-                        headers: { 'Content-Type': 'text/plain' }
-                    }).then(() => {
-                        const txt2 = document.getElementById('loading-text');
-                        if(txt2) txt2.textContent = "Verifying approval...";
-                        verifyActionLoop(id, 'Completed', 1, slowWarningTimer, "Record successfully approved!");
-                    });
-                })
-                .catch(err => {
-                    console.error("Ralat pada approveSingleRow:", err);
-                    clearTimeout(slowWarningTimer);
-                    processingRows.delete(id);
-                    hideLoading();
-                    alert("Failed to process. Please try again.");
-                    fetchDataFromGoogleSheet(true);
-                });
+                showToast("Record successfully approved!");
+            }).catch(err => {
+                processingRows.delete(id);
+                alert("Failed to process. Please check your connection.");
+            });
         }
         
         function reopenRecord(id, tabId) {
-            if (processingRows.has(id)) {
-                showToast("This record is already being processed.");
-                return;
-            }
-
+            if (processingRows.has(id)) return;
             if(!confirm(`Adakah anda pasti mahu 'Reopen' rekod ini untuk membenarkan staf mengedit semula?`)) return;
             
             processingRows.add(id);
-            console.log(`[REOPEN ROW] Admin membuka semula rekod ID: ${id}`);
             
             const btns = document.querySelectorAll(`button[onclick*="reopenRecord(${id}"]`);
             btns.forEach(btn => {
@@ -1981,64 +1712,29 @@
                 btn.innerHTML = `<svg class="animate-spin w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
             });
 
-            showLoading("Membuka semula rekod...");
+            const index = masterData.findIndex(r => r.id === id);
+            if (index === -1) { processingRows.delete(id); return; }
 
-            let slowWarningTimer = setTimeout(() => {
-                const txt = document.getElementById('loading-text');
-                if(txt) txt.textContent = "Reopening process is taking longer than usual. Please wait...";
-            }, 3000);
+            let recordToUpdate = {...masterData[index]};
+            recordToUpdate.status = 'incomplete';
+            recordToUpdate.approvedBy = '';
+            recordToUpdate.approvedDate = '';
 
-            if (GAS_WEB_APP_URL === "LETAK_URL_GOOGLE_APPS_SCRIPT_ANDA_DI_SINI") {
-                clearTimeout(slowWarningTimer);
+            masterData[index] = recordToUpdate;
+            applyFilters(tabId, true);
+
+            fetch(GAS_WEB_APP_URL, {
+                method: 'POST', 
+                mode: 'no-cors',
+                body: JSON.stringify({ action: 'updateRow', record: recordToUpdate }), 
+                headers: { 'Content-Type': 'text/plain' }
+            }).then(() => {
                 processingRows.delete(id);
-                hideLoading();
-                return;
-            }
-
-            fetch(GAS_WEB_APP_URL + "?action=getInitialData")
-                .then(res => {
-                    if(!res.ok) throw new Error("HTTP Error");
-                    return res.text();
-                })
-                .then(text => {
-                    let latestData = JSON.parse(text);
-                    const rec = latestData.find(r => r.id === id);
-                    if (!rec) throw new Error("Rekod tidak dijumpai.");
-
-                    const loadTxt = document.getElementById('loading-text');
-                    if(loadTxt) loadTxt.textContent = "Updating status...";
-
-                    let recordToUpdate = {...rec};
-                    recordToUpdate.status = 'incomplete';
-                    recordToUpdate.approvedBy = '';
-                    recordToUpdate.approvedDate = '';
-
-                    const localIndex = masterData.findIndex(r => r.id === id);
-                    if(localIndex !== -1) masterData[localIndex] = recordToUpdate;
-                    
-                    applyDashboardFilter();
-                    applyFilters('collection', true);
-                    applyFilters('approvals', true);
-
-                    return fetch(GAS_WEB_APP_URL, {
-                        method: 'POST', 
-                        mode: 'no-cors',
-                        body: JSON.stringify({ action: 'updateRow', record: recordToUpdate }), 
-                        headers: { 'Content-Type': 'text/plain' }
-                    }).then(() => {
-                        const txt2 = document.getElementById('loading-text');
-                        if(txt2) txt2.textContent = "Verifying reopen...";
-                        verifyActionLoop(id, 'incomplete', 1, slowWarningTimer, "Rekod dibuka semula (Reopened)!");
-                    });
-                })
-                .catch(err => {
-                    console.error("Ralat pada reopenRecord:", err);
-                    clearTimeout(slowWarningTimer);
-                    processingRows.delete(id);
-                    hideLoading();
-                    alert("Failed to process reopen. Please try again.");
-                    fetchDataFromGoogleSheet(true);
-                });
+                showToast("Rekod dibuka semula (Reopened)!");
+            }).catch(err => {
+                processingRows.delete(id);
+                alert("Failed to process reopen. Please check your connection.");
+            });
         }
 
         function generateRowHTML(row, isEditing, isReadonlyView, tabId) {
@@ -2168,131 +1864,72 @@
         }
 
         function editRow(id, tabId) { 
-            try {
-                console.log(`[EDIT MODE] Mengaktifkan edit untuk ID: ${id} pada tab: ${tabId}`);
-                editingId = id; 
-                renderTable(tabId); 
-            } catch(e) {
-                console.error("Ralat pada editRow:", e);
-            }
+            editingId = id; 
+            renderTable(tabId); 
         }
         
         function cancelEdit(tabId) { 
-            try {
-                console.log(`[CANCEL EDIT] Membatalkan edit pada tab: ${tabId}`);
-                editingId = null; 
-                renderTable(tabId); 
-            } catch(e) {
-                console.error("Ralat pada cancelEdit:", e);
-            }
+            editingId = null; 
+            renderTable(tabId); 
         }
 
+        // FUNGSI INI HANYA DIJALANKAN SEKALI SAHAJA SELEPAS BERJAYA DISIMPAN
         function saveRow(id, tabId) {
-            try {
-                if (processingRows.has(id)) {
-                    showToast("This record is already being processed.");
-                    return;
-                }
+            if (processingRows.has(id)) return;
+            
+            const statusEl = document.getElementById(`edit-status-${tabId}-${id}`);
+            const ctrlEl = document.getElementById(`edit-ctrl-${tabId}-${id}`);
+            const c082El = document.getElementById(`edit-c082-${tabId}-${id}`);
+            const c050El = document.getElementById(`edit-c050-${tabId}-${id}`);
+            const staffEl = document.getElementById(`edit-staff-${tabId}-${id}`);
 
-                console.log(`[SAVE ROW] Menyimpan rekod ID: ${id} dari tab: ${tabId}`);
-                
-                const statusEl = document.getElementById(`edit-status-${tabId}-${id}`);
-                const ctrlEl = document.getElementById(`edit-ctrl-${tabId}-${id}`);
-                const c082El = document.getElementById(`edit-c082-${tabId}-${id}`);
-                const c050El = document.getElementById(`edit-c050-${tabId}-${id}`);
-                const staffEl = document.getElementById(`edit-staff-${tabId}-${id}`);
+            if (!statusEl || !ctrlEl || !c050El || !staffEl) return;
 
-                if (!statusEl || !ctrlEl || !c050El || !staffEl) {
-                    console.error("Elemen input tidak dijumpai. Pastikan rendering berjaya.");
-                    return;
-                }
+            processingRows.add(id);
+            
+            const index = masterData.findIndex(r => r.id === id);
+            if (index === -1) { processingRows.delete(id); return; }
 
-                processingRows.add(id);
-                showLoading("Saving...");
-
-                let slowWarningTimer = setTimeout(() => {
-                    const txt = document.getElementById('loading-text');
-                    if(txt) txt.textContent = "Saving is taking longer than usual. Please wait...";
-                }, 3000);
-
-                if (GAS_WEB_APP_URL === "LETAK_URL_GOOGLE_APPS_SCRIPT_ANDA_DI_SINI") {
-                    clearTimeout(slowWarningTimer);
-                    processingRows.delete(id);
-                    hideLoading();
-                    return;
-                }
-
-                fetch(GAS_WEB_APP_URL + "?action=getInitialData")
-                    .then(res => {
-                        if(!res.ok) throw new Error("HTTP Error");
-                        return res.text();
-                    })
-                    .then(text => {
-                        let latestData = JSON.parse(text);
-                        const rec = latestData.find(r => r.id === id);
-                        if (!rec) throw new Error("Rekod tidak wujud di pangkalan data.");
-
-                        const loadTxt = document.getElementById('loading-text');
-                        if(loadTxt) loadTxt.textContent = "Updating record...";
-
-                        let newStatus = statusEl.value;
-                        let newDate = rec.date;
-                        
-                        let finalStatusToSave = newStatus;
-                        if (currentUserRole === 'staff' && newStatus === 'Completed') {
-                            finalStatusToSave = 'Pending For Approval'; 
-                        }
-
-                        const currentStatusLower = (rec.status || "").toLowerCase().trim();
-                        if ((newStatus === 'Completed' || finalStatusToSave === 'Pending For Approval') && currentStatusLower !== 'completed' && currentStatusLower !== 'pending for approval') {
-                            const t = new Date();
-                            newDate = String(t.getDate()).padStart(2, '0') + '/' + String(t.getMonth() + 1).padStart(2, '0') + '/' + t.getFullYear();
-                        }
-
-                        const updatedRecord = {
-                            ...rec,
-                            controlNo: ctrlEl.value,
-                            callNo082: c082El ? c082El.value : rec.callNo082, 
-                            callNo050: c050El.value,
-                            staff: staffEl.value,
-                            status: finalStatusToSave, 
-                            date: newDate
-                        };
-
-                        const localIndex = masterData.findIndex(r => r.id === id);
-                        if(localIndex !== -1) masterData[localIndex] = updatedRecord;
-                        editingId = null;
-                        
-                        applyDashboardFilter();
-                        applyFilters('collection', true);
-                        applyFilters('approvals', true);
-
-                        return fetch(GAS_WEB_APP_URL, {
-                            method: 'POST', 
-                            mode: 'no-cors',
-                            body: JSON.stringify({ action: 'updateRow', record: updatedRecord }), 
-                            headers: { 'Content-Type': 'text/plain' }
-                        }).then(() => {
-                            const txt2 = document.getElementById('loading-text');
-                            if(txt2) txt2.textContent = "Verifying save...";
-                            verifyActionLoop(id, finalStatusToSave, 1, slowWarningTimer, "Record successfully updated.");
-                        });
-                    })
-                    .catch(err => {
-                        console.error("Ralat pada saveRow:", err);
-                        clearTimeout(slowWarningTimer);
-                        processingRows.delete(id);
-                        hideLoading();
-                        alert("Failed to save record. Please try again.");
-                        fetchDataFromGoogleSheet(true);
-                    });
-
-            } catch (error) {
-                console.error("Ralat tidak dijangka pada saveRow:", error);
-                processingRows.delete(id);
-                hideLoading();
-                alert("Ralat semasa menyimpan rekod. Sila semak konsol.");
+            let newStatus = statusEl.value;
+            let newDate = masterData[index].date;
+            
+            let finalStatusToSave = newStatus;
+            if (currentUserRole === 'staff' && newStatus === 'Completed') {
+                finalStatusToSave = 'Pending For Approval'; 
             }
+
+            const currentStatusLower = (masterData[index].status || "").toLowerCase().trim();
+            if ((newStatus === 'Completed' || finalStatusToSave === 'Pending For Approval') && currentStatusLower !== 'completed' && currentStatusLower !== 'pending for approval') {
+                const t = new Date();
+                newDate = String(t.getDate()).padStart(2, '0') + '/' + String(t.getMonth() + 1).padStart(2, '0') + '/' + t.getFullYear();
+            }
+
+            const updatedRecord = {
+                ...masterData[index],
+                controlNo: ctrlEl.value,
+                callNo082: c082El ? c082El.value : masterData[index].callNo082, 
+                callNo050: c050El.value,
+                staff: staffEl.value,
+                status: finalStatusToSave, 
+                date: newDate
+            };
+
+            masterData[index] = updatedRecord;
+            editingId = null;
+            applyFilters(tabId, true);
+
+            fetch(GAS_WEB_APP_URL, {
+                method: 'POST', 
+                mode: 'no-cors',
+                body: JSON.stringify({ action: 'updateRow', record: updatedRecord }), 
+                headers: { 'Content-Type': 'text/plain' }
+            }).then(() => {
+                processingRows.delete(id);
+                showToast("Record successfully updated.");
+            }).catch(err => {
+                processingRows.delete(id);
+                alert("Failed to process. Please check your connection.");
+            });
         }
 
         /* =====================================================================
